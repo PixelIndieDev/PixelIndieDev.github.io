@@ -171,7 +171,8 @@ li:hover span {
 /* buttons */
 /* original by Madflows*/
 /* edited */
-.menu > a {
+.menu > a,
+.backbuttonError {
 	position: relative;
 	display: inline-block;
 	cursor: pointer;
@@ -186,7 +187,8 @@ li:hover span {
 	width: 8vw;
 }
 
-.menu > a {
+.menu > a,
+.backbuttonError {
 	font-weight: 600;
 	user-select: none;
 	color: #3e8c88;
@@ -201,7 +203,8 @@ li:hover span {
 	transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
 }
 
-.menu > a::before {
+.menu > a::before,
+.backbuttonError::before {
 	position: absolute;
 	content: '';
 	width: 100%;
@@ -219,26 +222,30 @@ li:hover span {
 	transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
 }
 
-.menu > a:hover {
+.menu > a:hover,
+.backbuttonError:hover {
 	background: #15BCB9;
 	-webkit-transform: translate(0, 0.15vw);
 	transform: translate(0, 0.15vw);
 }
 
-.menu > a:hover::before {
+.menu > a:hover::before,
+.backbuttonError:hover::before {
 	-webkit-box-shadow: 0 0 0 0.1vw #00000050, 0 0.5vw 0 0 #00000010;
 	box-shadow: 0 0 0 0.1vw #00000050, 0 0.5vw 0 0 #00000010;
 	-webkit-transform: translate3d(0, 0.5vw, -1vw);
 	transform: translate3d(0, 0.5vw, -1vw);
 }
 
-.menu > a:active {
+.menu > a:active,
+.backbuttonError:active {
 	background: #116460;
 	-webkit-transform: translate(0, 0.7vw);
 	transform: translate(0, 0.7vw);
 }
 
-.menu > a:active::before {
+.menu > a:active::before,
+.backbuttonError:active::before {
 	-webkit-box-shadow: 0 0 0 0.1vw #00000050, 0 0 #00000010;
 	box-shadow: 0 0 0 0.1vw #00000050, 0 0 #00000010;
 	-webkit-transform: translate3d(0, 0, -1vw);
@@ -285,7 +292,8 @@ li:hover span {
 		width: 3.5vw;
 		padding: 0 1vw;
 	}
-	.menu > a {
+	.menu > a,
+	.backbuttonError {
 		font-size: 1vw;
 		width: 15vw;
 	}
@@ -332,7 +340,8 @@ li:hover span {
 	.socialIcons > a:hover {
 		scale: 1;
 	}
-	.menu > a {
+	.menu > a,
+	.backbuttonError {
 		font-size: 2.5vw;
 		margin: 0.5vw;
 		width: 40vw;
@@ -357,7 +366,8 @@ li:hover span {
 		font-size: 5vw;
 		margin-bottom: 4vh;
 	}
-	.menu > a {
+	.menu > a,
+	.backbuttonError {
 		font-size: 4.5vw;
 		margin: 0.5vw;
 		width: 50vw;

@@ -9,34 +9,38 @@ refreshHeartsBackgroundSize();
 
 // loading screen
 window.addEventListener('load', function() {
-    // minimum wait time
-    const minTimer = new Promise(resolve => setTimeout(resolve, 500));
-    const pageLoaded = new Promise(resolve => resolve());
+    errorPage = document.querySelector('.error-page');
+    // if error page, then always show the loading screen
+    if (!errorPage) {
+        // minimum wait time
+        const minTimer = new Promise(resolve => setTimeout(resolve, 500));
+        const pageLoaded = new Promise(resolve => resolve());
 
-    Promise.all([minTimer, pageLoaded]).then(() => {
-        // stop eye animation
-        const eyes = document.querySelector('.loader_eyes');
-        const eyeStyle = getComputedStyle(eyes);
-        eyes.style.transform = eyeStyle.transform;
-        eyes.classList.remove('loader_eyes_anim');
-        void eyes.offsetWidth;
-        eyes.style.transform = '';
-        //make invisible
-        const loader = document.querySelector('.loader');
-        loader.classList.add('invisible');
-        const mouth = document.querySelector('.loader_mouth');
-        mouth.classList.remove('invisible');
+        Promise.all([minTimer, pageLoaded]).then(() => {
+            // stop eye animation
+            const eyes = document.querySelector('.loader_eyes');
+            const eyeStyle = getComputedStyle(eyes);
+            eyes.style.transform = eyeStyle.transform;
+            eyes.classList.remove('loader_eyes_anim');
+            void eyes.offsetWidth;
+            eyes.style.transform = '';
+            //make invisible
+            const loader = document.querySelector('.loader');
+            loader.classList.add('invisible');
+            const mouth = document.querySelector('.loader_mouth');
+            mouth.classList.remove('invisible');
 
-        // set content invisible
-        const piggy = document.querySelector('.piggy');
-        piggy.classList.remove('invisible');
-        const content = document.querySelector('.upperContent');
+            // set content invisible
+            const piggy = document.querySelector('.piggy');
+            piggy.classList.remove('invisible');
+            const content = document.querySelector('.upperContent');
 
-        content.classList.remove('invisible');
-        canvas.classList.remove('blurry');
+            content.classList.remove('invisible');
+            canvas.classList.remove('blurry');
 
-        setTimeout(() => {loader.style.display = 'none';}, 500); 
-    });
+            setTimeout(() => {loader.style.display = 'none';}, 500); 
+        });
+    }
 });
 
 // hearts on the background
@@ -214,6 +218,7 @@ function runRecallTriggers() {
 }
 
 function attachLinks() {
+    // don't add 404 error page button to the selectors, force website refresh
     document.querySelectorAll('.content a').forEach(link => {
         if (link.origin !== window.location.origin) return;
         link.addEventListener('click', function(e) {
