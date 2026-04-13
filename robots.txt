@@ -1,0 +1,9 @@
+User-agent: ByteDanceSpider
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: *
+Disallow: /assets/images/socials
+Sitemap: https://pixelindiedev.github.io/
