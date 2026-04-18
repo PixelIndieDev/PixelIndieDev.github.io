@@ -138,7 +138,7 @@ function navigateTo(url) {
                 const existingClass = existingChild.getAttribute('class') || "";
                 if (!newChildren.some(c => (c.getAttribute('class') || "") === existingClass)) {
                     if (!existingChild.classList.contains('eyes')) {
-                        console.log("removed " + existingClass);
+                        console.log("Piggy Technical | removed piggy part named: " + existingClass);
                         existingChild.remove();
                     }
                 }

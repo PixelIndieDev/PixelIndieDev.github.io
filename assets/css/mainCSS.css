@@ -148,7 +148,7 @@ li:hover span {
 }
 
 .socialIcons {
-	padding-top: 3vh;
+	padding-top: 4vh;
 	display: flex;
 	flex-direction: ROW;
 	align-items: center;
@@ -159,7 +159,7 @@ li:hover span {
 .socialIcons > a {
 	width: 2vw;
 	height: 2vw;
-	padding: 0 0.3vw;
+	padding: 0 0.5vw;
 	scale: 1.0;
 	transition: scale 0.2s ease;
 }
@@ -321,7 +321,7 @@ li:hover span {
 		width: 80vw;
 		backdrop-filter: blur(1vw);
 		-webkit-backdrop-filter: blur(1vw);
-		top: 8vh;
+		top: 6vh;
 		left: 10vw;
 	}
 	h1 {
@@ -336,7 +336,7 @@ li:hover span {
 	.stats {
 		background: rgba(255,255,255,0.3);
 		pointer-events: none;
-		top: 72vh;
+		top: 68vh;
 		height: 25vw;
 		width: 70vw;
 		z-index: 500;

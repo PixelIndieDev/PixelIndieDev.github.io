@@ -64,15 +64,15 @@ earsHitboxElement.addEventListener('click', function() {
     let className = "wobbleEar";
     ear_L_Elements.forEach(a => {
         a.classList.remove(className);
-        void a.offsetWidth;
+        void a.parentElement.offsetWidth;
 
         a.classList.add(className);
-        void a.offsetWidth;
+        void a.parentElement.offsetWidth;
     });
     earTimer = setTimeout(function() {
         ear_L_Elements.forEach(a => {
             a.classList.remove(className);
-            void a.offsetWidth;
+            void a.parentElement.offsetWidth;
         });
         earTimer = null;
     }, 500);
@@ -87,15 +87,15 @@ earsHitboxElement2.addEventListener('click', function() {
     let className = "wobbleEar";
     ear_R_Elements.forEach(a => {
         a.classList.remove(className);
-        void a.offsetWidth;
+        void a.parentElement.offsetWidth;
 
         a.classList.add(className);
-        void a.offsetWidth;
+        void a.parentElement.offsetWidth;
     });
     earTimer2 = setTimeout(function() {
         ear_R_Elements.forEach(a => {
             a.classList.remove(className);
-            void a.offsetWidth;
+            void a.parentElement.offsetWidth;
         });
         earTimer2 = null;
     }, 500);
@@ -255,5 +255,5 @@ function removeAnimClasses() {
     eyeElement.parentElement.classList.remove("hearteyes");
     void eyeElement.offsetWidth;
     noseElement.classList.remove("snoutWiggle");
-    void noseElement.offsetWidth;
+    void noseElement.parentElement.offsetWidth;
 }
