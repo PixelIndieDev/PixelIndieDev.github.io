@@ -1,7 +1,7 @@
 Licenses
 
 Code | (HTML, CSS, JavaScript) - [MIT](LICENSE)
-Assets | (Piggy character SVGs) - CC BY-NC-ND 4.0 © PixelIndieDev. 
+Assets | (Piggy character and nature background SVGs) - CC BY-NC-ND 4.0 © PixelIndieDev. 
 
 You may not use, modify, or redistribute Piggy from this repo for commercial purposes or as derivative works.
 

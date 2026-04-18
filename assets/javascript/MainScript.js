@@ -13,7 +13,7 @@ window.addEventListener('load', function() {
     // if error page, then always show the loading screen
     if (!errorPage) {
         // minimum wait time
-        const minTimer = new Promise(resolve => setTimeout(resolve, 500));
+        const minTimer = new Promise(resolve => setTimeout(resolve, 300));
         const pageLoaded = new Promise(resolve => resolve());
 
         Promise.all([minTimer, pageLoaded]).then(() => {
@@ -135,16 +135,18 @@ function navigateTo(url) {
             const existingChildren = [...existingPiggy.children];
             // remove children if missing
             existingChildren.forEach(existingChild => {
-                if (!newChildren.some(c => c.className === existingChild.className)) {
+                const existingClass = existingChild.getAttribute('class') || "";
+                if (!newChildren.some(c => (c.getAttribute('class') || "") === existingClass)) {
                     if (!existingChild.classList.contains('eyes')) {
-                        console.log("removed " + existingChild.className);
+                        console.log("removed " + existingClass);
                         existingChild.remove();
                     }
                 }
             });
             // add children if missing
             newChildren.forEach((newChild, index) => {
-                const existing = [...existingPiggy.children].find(c => c.className === newChild.className);
+                const newClass = newChild.getAttribute('class') || "";
+                const existing = [...existingPiggy.children].find(c => (c.getAttribute('class') || "") === newClass);
                 if (!existing) {
                     if (!newChild.classList.contains('eyes')) {
                         const ref = existingPiggy.children[index] || null;

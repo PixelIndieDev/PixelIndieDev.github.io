@@ -4,7 +4,7 @@ const staticEyeOffset_Y = 175;
 const minDistanceAway = 100;
 const maxDistanceAway = 600;
 
-const eyeElement = document.querySelector('.eyes');
+const eyeElement = document.querySelector('.eyes use');
 const piggyElement = document.querySelector('.piggy');
 let pageCenteredX = window.innerWidth * 0.5;
 let pageCenteredY = window.innerHeight * 0.5;
@@ -20,7 +20,7 @@ function recalcEyeCenter() {
 
 piggyElement.addEventListener('animationend', recalcEyeCenter, { once: true });
 
-const mouthElement = document.querySelector('.mouth');
+const mouthElement = document.querySelector('.mouth use');
 const noseElement = document.querySelector('.nose');
 const glassCracksElement = document.querySelector('.glassesCracks');
 const ear_L_Elements = document.querySelectorAll(".ear_l");
@@ -135,20 +135,20 @@ const Emotion = Object.freeze({
 let piggyEmotion = Emotion.NEUTRAL;
 
 // eyes
-const eyes_neutral = 'assets/images/eyes/Piggy_Eyes_Neutral.svg';
-const eyes_hearts = 'assets/images/eyes/Piggy_Eyes_Hearts.svg';
-const eyes_sad = 'assets/images/eyes/Piggy_Eyes_Sad.svg';
-const eyes_angry = 'assets/images/eyes/Piggy_Eyes_Angry.svg';
-const eyes_drooling = 'assets/images/eyes/Piggy_Eyes_Drooling.svg';
-const eyes_shocked = 'assets/images/eyes/Piggy_Eyes_Shocked.svg';
+const eyes_neutral = 'assets/images/Piggy_Full.svg#eyes-neutral';
+const eyes_hearts = 'assets/images/Piggy_Full.svg#eyes-hearts';
+const eyes_sad = 'assets/images/Piggy_Full.svg#eyes-sad';
+const eyes_angry = 'assets/images/Piggy_Full.svg#eyes-angry';
+const eyes_drooling = 'assets/images/Piggy_Full.svg#eyes-drooling';
+const eyes_shocked = 'assets/images/Piggy_Full.svg#eyes-shocked';
 
 // mouths
-const mouth_neutral = 'assets/images/mouth/Piggy_Mouth_Neutral.svg';
-const mouth_smile = 'assets/images/mouth/Piggy_Mouth_Smile.svg';
-const mouth_happy = 'assets/images/mouth/Piggy_Mouth_Happy.svg';
-const mouth_sad = 'assets/images/mouth/Piggy_Mouth_Sad.svg';
-const mouth_drooling = 'assets/images/mouth/Piggy_Mouth_Drooling.svg';
-const mouth_shocked = 'assets/images/mouth/Piggy_Mouth_Shocked.svg';
+const mouth_neutral = 'assets/images/Piggy_Full.svg#mouth-neutral';
+const mouth_smile = 'assets/images/Piggy_Full.svg#mouth-smile';
+const mouth_happy = 'assets/images/Piggy_Full.svg#mouth-happy';
+const mouth_sad = 'assets/images/Piggy_Full.svg#mouth-sad';
+const mouth_drooling = 'assets/images/Piggy_Full.svg#mouth-drooling';
+const mouth_shocked = 'assets/images/Piggy_Full.svg#mouth-shocked';
 
 window.recallTriggers = function() {
     const triggerMap = {
@@ -204,45 +204,45 @@ function switchEmotion(newEmotion) {
 
     switch (piggyEmotion) {
         case Emotion.NEUTRAL:
-            eyeElement.src = eyes_neutral;
-            mouthElement.src = mouth_neutral;
+            eyeElement.setAttribute('href', eyes_neutral);
+            mouthElement.setAttribute('href', mouth_neutral);
             removeAnimClasses();
             break;
         case Emotion.SMILE:
-            eyeElement.src = eyes_neutral;
-            mouthElement.src = mouth_smile;
+            eyeElement.setAttribute('href', eyes_neutral);
+            mouthElement.setAttribute('href', mouth_smile);
             removeAnimClasses();
             break;
         case Emotion.HAPPY:
-            eyeElement.src = eyes_neutral;
-            mouthElement.src = mouth_happy;
+            eyeElement.setAttribute('href', eyes_neutral);
+            mouthElement.setAttribute('href', mouth_happy);
             removeAnimClasses();
             break;
         case Emotion.HEARTS:
-            eyeElement.src = eyes_hearts;
-            mouthElement.src = mouth_happy;
+            eyeElement.setAttribute('href', eyes_hearts);
+            mouthElement.setAttribute('href', mouth_happy);
             removeAnimClasses();
-            eyeElement.classList.add("hearteyes");
+            eyeElement.parentElement.classList.add("hearteyes");
             break;
         case Emotion.SAD:
-            eyeElement.src = eyes_sad;
-            mouthElement.src = mouth_sad;
+            eyeElement.setAttribute('href', eyes_sad);
+            mouthElement.setAttribute('href', mouth_sad);
             removeAnimClasses();
             break;
         case Emotion.DROOLING:
-            eyeElement.src = eyes_drooling;
-            mouthElement.src = mouth_drooling;
+            eyeElement.setAttribute('href', eyes_drooling);
+            mouthElement.setAttribute('href', mouth_drooling);
             removeAnimClasses();
             break;
         case Emotion.ANGRY:
-            eyeElement.src = eyes_angry;
-            mouthElement.src = mouth_neutral;
+            eyeElement.setAttribute('href', eyes_angry);
+            mouthElement.setAttribute('href', mouth_neutral);
             removeAnimClasses();
             noseElement.classList.add("snoutWiggle");
             break;
         case Emotion.SHOCKED:
-            eyeElement.src = eyes_shocked;
-            mouthElement.src = mouth_shocked;
+            eyeElement.setAttribute('href', eyes_shocked);;
+            mouthElement.setAttribute('href', mouth_shocked);
             removeAnimClasses();
             break;
         default:
@@ -252,7 +252,7 @@ function switchEmotion(newEmotion) {
 }
 
 function removeAnimClasses() {
-    eyeElement.classList.remove("hearteyes");
+    eyeElement.parentElement.classList.remove("hearteyes");
     void eyeElement.offsetWidth;
     noseElement.classList.remove("snoutWiggle");
     void noseElement.offsetWidth;

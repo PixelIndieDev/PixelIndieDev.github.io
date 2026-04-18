@@ -1,1 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?><svg id="uuid-b7325300-485e-4d9f-b758-0aa712de93ec" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1024 1024"><defs><style>.uuid-dce0734e-3416-4140-bbe8-91bdebcb7892,.uuid-45ba7c35-69c8-481b-abba-1dc5ee5079d6{fill:none;}.uuid-45ba7c35-69c8-481b-abba-1dc5ee5079d6{stroke:#666;stroke-miterlimit:10;stroke-width:10px;}.uuid-fc02eaee-66f3-47d7-bfb4-0e8592369d40{clip-path:url(#uuid-59b82e9e-5ce6-40ed-80ba-0f274d3120a6);}.uuid-625e1d1d-2a15-4bd4-818b-af1e57ecb161{clip-path:url(#uuid-e699140c-da09-479c-8dbf-f60a3314ff3a);}.uuid-114f3096-780d-47e0-97c4-0c6696fc71fd{clip-path:url(#uuid-bdce8cb7-5333-4e7b-ab80-e79b61a6291c);}.uuid-1808b722-5d9d-43d9-b87a-1aa53bc504f8{clip-path:url(#uuid-165a4c9e-ccbd-4c68-92c7-e130d5c9ac64);}</style><clipPath id="uuid-e699140c-da09-479c-8dbf-f60a3314ff3a"><rect class="uuid-dce0734e-3416-4140-bbe8-91bdebcb7892" x="731.7882" y="543.2789" width="169.0182" height="256.2599"/></clipPath><clipPath id="uuid-165a4c9e-ccbd-4c68-92c7-e130d5c9ac64"><rect class="uuid-dce0734e-3416-4140-bbe8-91bdebcb7892" x="124.5901" y="543.2789" width="169.0182" height="256.2599"/></clipPath><clipPath id="uuid-59b82e9e-5ce6-40ed-80ba-0f274d3120a6"><rect class="uuid-dce0734e-3416-4140-bbe8-91bdebcb7892" x="632.771" y="148.2467" width="190.5888" height="469.2012"/></clipPath><clipPath id="uuid-bdce8cb7-5333-4e7b-ab80-e79b61a6291c"><rect class="uuid-dce0734e-3416-4140-bbe8-91bdebcb7892" x="202.7164" y="148.2467" width="190.5888" height="469.2012"/></clipPath></defs><g id="uuid-74baf16f-a89a-4d2d-a0dd-65f431e0a938"><g class="uuid-625e1d1d-2a15-4bd4-818b-af1e57ecb161"><path class="uuid-45ba7c35-69c8-481b-abba-1dc5ee5079d6" d="M898.0755,547.4673c-104.5868,68.1933-128.9812,135.6484-161.4755,250.7127"/></g></g><g id="uuid-29b834f5-25c2-45c8-9fda-c6e3d77f7ead"><g class="uuid-1808b722-5d9d-43d9-b87a-1aa53bc504f8"><path class="uuid-45ba7c35-69c8-481b-abba-1dc5ee5079d6" d="M127.321,547.4673c104.5868,68.1933,128.9812,135.6484,161.4755,250.7127"/></g></g><g id="uuid-3049f943-77b4-4410-b23e-252f040b0388"><g class="uuid-fc02eaee-66f3-47d7-bfb4-0e8592369d40"><path class="uuid-45ba7c35-69c8-481b-abba-1dc5ee5079d6" d="M646,150c-12.2791,32.7933-13.7428,55.3228,16.2158,77.8317,15.3053,11.7086,33.8804,19.9208,47.4004,33.6211,12.0594,12.0938,20.4651,27.2595,25.9706,43.4791,7.2306,21.7906,10.0421,44.9942,13.3313,67.7347,4.908,39.7647,13.0791,79.2429,21.7754,118.1022,4.5182,19.7801,9.8006,39.6655,16.7341,58.7988,8.257,23.1029,19.7852,44.4387,31.5724,65.4324"/></g></g><g id="uuid-64b6b047-6942-482a-ae22-f864a8e7d28d"><g class="uuid-114f3096-780d-47e0-97c4-0c6696fc71fd"><path class="uuid-45ba7c35-69c8-481b-abba-1dc5ee5079d6" d="M380.0762,150c12.2791,32.7933,13.7428,55.3228-16.2158,77.8317-15.3053,11.7086-33.8804,19.9208-47.4004,33.6211-12.0594,12.0938-20.4651,27.2595-25.9706,43.4791-7.2306,21.7906-10.0421,44.9942-13.3313,67.7347-4.908,39.7647-13.0791,79.2429-21.7754,118.1022-4.5182,19.7801-9.8006,39.6655-16.7341,58.7988-8.257,23.1029-19.7852,44.4387-31.5724,65.4324"/></g></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-c0049897-4100-4034-91f4-26fd5a72ad10" data-name="uuid-b7325300-485e-4d9f-b758-0aa712de93ec" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="uuid-c6c7383a-467a-4b5c-9b30-3d487a4342c4">
+      <rect x="731.7882" y="543.2789" width="169.0182" height="256.2599" style="fill: none;"/>
+    </clipPath>
+    <clipPath id="uuid-ea97409d-4197-4156-b6e0-717b127db337">
+      <rect x="124.5901" y="543.2789" width="169.0182" height="256.2599" style="fill: none;"/>
+    </clipPath>
+    <clipPath id="uuid-44f592a9-8a47-4b50-a300-740ee1c141e3">
+      <rect x="632.771" y="148.2467" width="190.5888" height="469.2012" style="fill: none;"/>
+    </clipPath>
+    <clipPath id="uuid-7a0bdb85-339f-49a3-b0e5-a98ff1455bf7">
+      <rect x="202.7164" y="148.2467" width="190.5888" height="469.2012" style="fill: none;"/>
+    </clipPath>
+  </defs>
+  <g id="uuid-74d33224-8229-466d-bd0c-bc6a3b5423f1" data-name="uuid-74baf16f-a89a-4d2d-a0dd-65f431e0a938">
+    <g style="clip-path: url(#uuid-c6c7383a-467a-4b5c-9b30-3d487a4342c4);">
+      <path d="M898.0755,547.4673c-104.5868,68.1933-128.9812,135.6484-161.4755,250.7127" style="fill: none; stroke: #666; stroke-miterlimit: 10; stroke-width: 10px;"/>
+    </g>
+  </g>
+  <g id="uuid-b72c541a-1e2d-4604-965b-84d0bbc92acf" data-name="uuid-29b834f5-25c2-45c8-9fda-c6e3d77f7ead">
+    <g style="clip-path: url(#uuid-ea97409d-4197-4156-b6e0-717b127db337);">
+      <path d="M127.321,547.4673c104.5868,68.1933,128.9812,135.6484,161.4755,250.7127" style="fill: none; stroke: #666; stroke-miterlimit: 10; stroke-width: 10px;"/>
+    </g>
+  </g>
+  <g id="uuid-f1874a73-b64f-4760-9758-c0d7cf2e41ec" data-name="uuid-3049f943-77b4-4410-b23e-252f040b0388">
+    <g style="clip-path: url(#uuid-44f592a9-8a47-4b50-a300-740ee1c141e3);">
+      <path d="M646,150c-12.2791,32.7933-13.7428,55.3228,16.2158,77.8317,15.3053,11.7086,33.8804,19.9208,47.4004,33.6211,12.0594,12.0938,20.4651,27.2595,25.9706,43.4791,7.2306,21.7906,10.0421,44.9942,13.3313,67.7347,4.908,39.7647,13.0791,79.2429,21.7754,118.1022,4.5182,19.7801,9.8006,39.6655,16.7341,58.7988,8.257,23.1029,19.7852,44.4387,31.5724,65.4324" style="fill: none; stroke: #666; stroke-miterlimit: 10; stroke-width: 10px;"/>
+    </g>
+  </g>
+  <g id="uuid-3d7ff50f-6ef2-403c-a407-5741a2461000" data-name="uuid-64b6b047-6942-482a-ae22-f864a8e7d28d">
+    <g style="clip-path: url(#uuid-7a0bdb85-339f-49a3-b0e5-a98ff1455bf7);">
+      <path d="M380.0762,150c12.2791,32.7933,13.7428,55.3228-16.2158,77.8317-15.3053,11.7086-33.8804,19.9208-47.4004,33.6211-12.0594,12.0938-20.4651,27.2595-25.9706,43.4791-7.2306,21.7906-10.0421,44.9942-13.3313,67.7347-4.908,39.7647-13.0791,79.2429-21.7754,118.1022-4.5182,19.7801-9.8006,39.6655-16.7341,58.7988-8.257,23.1029-19.7852,44.4387-31.5724,65.4324" style="fill: none; stroke: #666; stroke-miterlimit: 10; stroke-width: 10px;"/>
+    </g>
+  </g>
+</svg>

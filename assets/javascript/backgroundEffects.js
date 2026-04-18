@@ -41,6 +41,8 @@ window.recallTriggers_backgroundEffects = function() {
             natureElements.forEach(a => {
                 a.classList.add("onScreen");
             });
+            const natureSky = document.querySelector(".naturebackground");
+            natureSky.classList.add("appearOnScreen");
         });
 
         triggerNature.addEventListener('mouseleave', () => {
@@ -48,6 +50,8 @@ window.recallTriggers_backgroundEffects = function() {
             natureElements.forEach(a => {
                 a.classList.remove("onScreen");
             });
+            const natureSky = document.querySelector(".naturebackground");
+            natureSky.classList.remove("appearOnScreen");
         })
     }
 

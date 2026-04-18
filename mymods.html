@@ -27,31 +27,19 @@
 	<meta name="apple-mobile-web-app-title" content="PixelIndieDev" />
 	<link rel="manifest" href="/assets/favicon/site.webmanifest" />
 
+	<script>
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', () => {
+				navigator.serviceWorker.register('/assets/javascript/Caching.js').catch(() => {});
+			});
+		}
+	</script>
+
 	<!-- Preload -->
 	 <!-- piggy cartoon anim parts -->
-  	<link rel="preload" as="image" href="assets/images/Piggy_Body.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/Piggy_Head.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/Piggy_Glasses.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/Piggy_Nose.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/Piggy_Ears_Back_L.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/Piggy_Ears_Back_R.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/Piggy_Ears_Front_L.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/Piggy_Ears_Front_R.svg" type="image/svg+xml">
-	<!-- eyes -->
-	<link rel="preload" as="image" href="assets/images/eyes/Piggy_Eyes_Neutral.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/eyes/Piggy_Eyes_Hearts.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/eyes/Piggy_Eyes_Shocked.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/eyes/Piggy_Eyes_Angry.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/eyes/Piggy_Eyes_Drooling.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/eyes/Piggy_Eyes_Sad.svg" type="image/svg+xml">
-	<!-- mouths -->
-	<link rel="preload" as="image" href="assets/images/mouth/Piggy_Mouth_Neutral.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/mouth/Piggy_Mouth_Happy.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/mouth/Piggy_Mouth_Drooling.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/mouth/Piggy_Mouth_Sad.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/mouth/Piggy_Mouth_Shocked.svg" type="image/svg+xml">
-	<link rel="preload" as="image" href="assets/images/mouth/Piggy_Mouth_Smile.svg" type="image/svg+xml">
-
+  	<link rel="preload" as="image" href="assets/images/Piggy_Full.svg" type="image/svg+xml">
+	<!-- social icons -->
+	<link rel="preload" as="image" href="assets/images/socials/social_icons.svg" type="image/svg+xml">
 	<!-- css -->
 	<link rel="preload" href="assets/css/loaderCSS.css" as="style" />
 	<link rel="preload" href="assets/css/mainCSS.css" as="style" />
@@ -67,15 +55,33 @@
 <body>
 	<div class="loader">
 		<div class="loadingIcon">
-			<img class="loader_ear_L" src="assets/images/Piggy_Ears_Back_L.svg" alt="piggy's left ear (backside)" draggable="false"/>
-			<img class="loader_ear_R" src="assets/images/Piggy_Ears_Back_R.svg" alt="piggy's right ear (backside)" draggable="false"/>
-			<img src="assets/images/Piggy_Head.svg" alt="" draggable="false"/>
-			<img class="loader_ear_L" src="assets/images/Piggy_Ears_Front_L.svg" alt="piggy's left ear" draggable="false"/>
-			<img class="loader_ear_R" src="assets/images/Piggy_Ears_Front_R.svg" alt="piggy's right ear" draggable="false"/>
-			<img class="loader_eyes loader_eyes_anim" src="assets/images/eyes/Piggy_Eyes_Neutral.svg" alt="piggy's eyes" draggable="false"/>
-			<img class="loader_mouth invisible" src="assets/images/mouth/Piggy_Mouth_Happy.svg" alt="piggy's mouth" draggable="false"/>
-			<img class="loader_nose" src="assets/images/Piggy_Nose.svg" alt="piggy's snout" draggable="false"/>
-			<img class="loader_glasses" src="assets/images/Piggy_Glasses.svg" alt="piggy's glasses" draggable="false"/>
+			<svg class="loader_ear_L" aria-label="piggy's ear left (backside)">
+				<use href="assets/images/Piggy_Full.svg#ear-back-l"></use>
+			</svg>
+			<svg class="loader_ear_R" aria-label="piggy's ear right (backside)">
+				<use href="assets/images/Piggy_Full.svg#ear-back-r"></use>
+			</svg>
+			<svg aria-label="piggy's head">
+				<use href="assets/images/Piggy_Full.svg#head"></use>
+			</svg>
+			<svg class="loader_ear_L" aria-label="piggy's ear left (frontside)">
+				<use href="assets/images/Piggy_Full.svg#ear-front-l"></use>
+			</svg>
+			<svg class="loader_ear_R" aria-label="piggy's ear right (frontside)">
+				<use href="assets/images/Piggy_Full.svg#ear-front-r"></use>
+			</svg>
+			<svg class="loader_eyes loader_eyes_anim" aria-label="piggy's eyes">
+				<use href="assets/images/Piggy_Full.svg#eyes-neutral"></use>
+			</svg>
+			<svg class="loader_mouth invisible" aria-label="piggy's mouth">
+				<use href="assets/images/Piggy_Full.svg#mouth-happy"></use>
+			</svg>
+			<svg class="loader_nose" aria-label="piggy's nose">
+				<use href="assets/images/Piggy_Full.svg#nose"></use>
+			</svg>
+			<svg class="loader_glasses" aria-label="piggy's glasses">
+				<use href="assets/images/Piggy_Full.svg#glasses"></use>
+			</svg>
 		</div>
 		<h1 class="loadertext noHoverScale">LOADING</h1>
 	</div>
@@ -88,15 +94,21 @@
 				<h1 class="addPadding">My Mods</h1>
 				<a target="_blank" class="longButton Trigger_smile" href="https://www.curseforge.com/members/elastic_stonebraker275352/projects?page=1&pageSize=20&sortBy=ReleaseDate&sortOrder=Desc&classIds=5089%2C5339%2C5437%2C78062">
 					Sims 4 Mods
-					<img src="assets/images/socials/curseforge.svg" alt="">
+					<svg aria-label="Curseforge logo">
+						<use href="assets/images/socials/social_icons.svg#curseforge"></use>
+					</svg>
 				</a>
 				<a target="_blank" class="longButton Trigger_smile" href="https://modrinth.com/user/PixelIndieDev">
 					Minecraft Mods
-					<img src="assets/images/socials/modrinth.svg" alt="">
+					<svg aria-label="Modrinth logo">
+						<use href="assets/images/socials/social_icons.svg#modrinth"></use>
+					</svg>
 				</a>
 				<a target="_blank" class="longButton Trigger_smile" href="https://thunderstore.io/c/lethal-company/p/PixelIndieDev/">
 					Lethal Company Mods
-					<img src="assets/images/socials/thunderstore.svg" alt="">
+					<svg aria-label="Thunderstore logo">
+						<use href="assets/images/socials/social_icons.svg#thunderstore"></use>
+					</svg>
 				</a>
 				<a class="backbutton" href="index.html">Back</a>
 			</div>
@@ -104,22 +116,44 @@
 	</div>
 
 	<div class="piggy invisible">
-		<img class="body" src="assets/images/Piggy_Body.svg" alt="piggy's body" draggable="false"/>
-		<img class="ear_l behind" src="assets/images/Piggy_Ears_Back_L.svg" alt="piggy's ear left (backside)" draggable="false"/>
-		<img class="ear_r behind" src="assets/images/Piggy_Ears_Back_R.svg" alt="piggy's ear right (backside)" draggable="false"/>
-		<img class="head" src="assets/images/Piggy_Head.svg" alt="piggy's head" draggable="false"/>
-		<img class="ear_l" src="assets/images/Piggy_Ears_Front_L.svg" alt="piggy's ear left (frontside)" draggable="false"/>
-		<img class="ear_r" src="assets/images/Piggy_Ears_Front_R.svg" alt="piggy's ear right (frontside)" draggable="false"/>
-		<img class="eyes" src="assets/images/eyes/Piggy_Eyes_Neutral.svg" alt="piggy's eyes" draggable="false"/>
-		<img class="mouth" src="assets/images/mouth/Piggy_Mouth_Neutral.svg" alt="piggy's mouth" draggable="false"/>
-		<img class="nose" src="assets/images/Piggy_Nose.svg" alt="piggy's nose" draggable="false"/>
+		<svg class="body" aria-label="piggy's body">
+			<use href="assets/images/Piggy_Full.svg#body"></use>
+		</svg>
+		<svg class="ear_l behind" aria-label="piggy's ear left (backside)">
+			<use href="assets/images/Piggy_Full.svg#ear-back-l"></use>
+		</svg>
+		<svg class="ear_r behind" aria-label="piggy's ear right (backside)">
+			<use href="assets/images/Piggy_Full.svg#ear-back-r"></use>
+		</svg>
+		<svg class="head" aria-label="piggy's head">
+			<use href="assets/images/Piggy_Full.svg#head"></use>
+		</svg>
+		<svg class="ear_l" aria-label="piggy's ear left (frontside)">
+			<use href="assets/images/Piggy_Full.svg#ear-front-l"></use>
+		</svg>
+		<svg class="ear_r" aria-label="piggy's ear right (frontside)">
+			<use href="assets/images/Piggy_Full.svg#ear-front-r"></use>
+		</svg>
+		<svg class="eyes" aria-label="piggy's eyes">
+			<use href="assets/images/Piggy_Full.svg#eyes-neutral"></use>
+		</svg>
+		<svg class="mouth" aria-label="piggy's mouth">
+			<use href="assets/images/Piggy_Full.svg#mouth-neutral"></use>
+		</svg>
+		<svg class="nose" aria-label="piggy's nose">
+			<use href="assets/images/Piggy_Full.svg#nose"></use>
+		</svg>
 		<div class="ears-hitbox ears-hitbox-1 hitbox"></div>
 		<div class="ears-hitbox ears-hitbox-2 hitbox"></div>
 		<div class="nose-hitbox hitbox"></div>
 		<div class="glasses-hitbox glasses-hitbox-1 hitbox"></div>
 		<div class="glasses-hitbox glasses-hitbox-2 hitbox"></div>
-		<img class="glassesCracks" src="assets/images/Piggy_GlassesCracks.svg" alt="piggy's cracked glasses" draggable="false"/>
-		<img class="glasses" src="assets/images/Piggy_Glasses.svg" alt="piggy's glasses" draggable="false"/>
+		<svg class="glassesCracks" aria-label="piggy's cracked glasses">
+			<use href="assets/images/Piggy_Full.svg#glasses-cracks"></use>
+		</svg>
+		<svg class="glasses" aria-label="piggy's glasses">
+			<use href="assets/images/Piggy_Full.svg#glasses"></use>
+		</svg>
 	</div>
 
 	<script src="assets/javascript/MainScript.js" defer></script>

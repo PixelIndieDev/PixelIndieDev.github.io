@@ -18,9 +18,11 @@
 
 .piggy > * {
 	position: absolute;
+  width: 100%;
+	height: 100%;
 }
 
-.piggy .eyes {
+.piggy .eyes use {
 	will-change: left, top;
 	transition: transform 0.12s ease-out;
 }

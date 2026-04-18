@@ -109,7 +109,6 @@ ul {
 }
 
 li {
-	/* transition: scale 0.2s ease; */
 	list-style-image: url('../images/ui/heart_ul.svg');
   	list-style-type: square;
 	scale: 1;
@@ -159,6 +158,7 @@ li:hover span {
 
 .socialIcons > a {
 	width: 2vw;
+	height: 2vw;
 	padding: 0 0.3vw;
 	scale: 1.0;
 	transition: scale 0.2s ease;
@@ -168,13 +168,18 @@ li:hover span {
 	scale: 1.4;
 }
 
+.socialIcons svg {
+	width: 100%;
+	height: 100%;
+}
+
 /* buttons */
 /* original by Madflows*/
 /* edited */
 .menu > a,
 .backbuttonError {
 	position: relative;
-	display: inline-block;
+	display: flex;
 	cursor: pointer;
 	outline: none;
 	border: 0;
@@ -185,6 +190,8 @@ li:hover span {
 	font-size: 0.8vw;
 	margin: 0.5vw;
 	width: 8vw;
+	align-items: center;
+    justify-content: center;
 }
 
 .menu > a,
@@ -260,8 +267,9 @@ li:hover span {
   	justify-content: space-between;
 }
 
-.menu > a > img {
+.menu > a > svg {
 	width: 1.5vw;
+	height: 1.5vw;
 	user-select: none;
 }
 
@@ -290,6 +298,7 @@ li:hover span {
 	}
 	.socialIcons > a {
 		width: 3.5vw;
+		height: 3.5vw;
 		padding: 0 1vw;
 	}
 	.menu > a,
@@ -312,7 +321,7 @@ li:hover span {
 		width: 80vw;
 		backdrop-filter: blur(1vw);
 		-webkit-backdrop-filter: blur(1vw);
-		top: 10vh;
+		top: 8vh;
 		left: 10vw;
 	}
 	h1 {
@@ -335,6 +344,7 @@ li:hover span {
 	}
 	.socialIcons > a {
 		width: 8vw;
+		height: 8vw;
 		padding: 0 2vw;
 	}
 	.socialIcons > a:hover {
@@ -345,6 +355,7 @@ li:hover span {
 		font-size: 2.5vw;
 		margin: 0.5vw;
 		width: 40vw;
+		height: 4vh;
 	}
 	ul {
 		font-size: 3vw;
@@ -353,8 +364,9 @@ li:hover span {
 	.menu .longButton {
 		width: 60vw;
 	}
-	.menu > a > img {
+	.menu > a > svg {
 		width: 3vw;
+		height: 3vw;
 	}
 }
 
@@ -368,12 +380,14 @@ li:hover span {
 	}
 	.menu > a,
 	.backbuttonError {
-		font-size: 4.5vw;
+		font-size: 4vw;
 		margin: 0.5vw;
 		width: 50vw;
+		height: 5vh;
 	}
 	.socialIcons > a {
 		width: 10vw;
+		height: 10vw;
 		padding: 0 3vw;
 	}
 	.stats {
@@ -389,8 +403,9 @@ li:hover span {
 	.menu .longButton {
 		width: 60vw;
 	}
-	.menu > a > img {
+	.menu > a > svg {
 		width: 5vw;
+		height: 5vw;
 	}
 }
 

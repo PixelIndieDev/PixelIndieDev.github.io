@@ -5,5 +5,6 @@ User-agent: Bytespider
 Disallow: /
 
 User-agent: *
-Disallow: /assets/images/socials
-Sitemap: https://pixelindiedev.github.io/
+Disallow: /assets/images/socials/
+Disallow: /assets/images/Piggy_Full.svg
+Sitemap: https://pixelindiedev.github.io/sitemap.xml
