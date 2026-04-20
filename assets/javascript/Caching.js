@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const STATIC_CACHE = `piggy-static-${CACHE_VERSION}`;
 const PAGES_CACHE = `piggy-pages-${CACHE_VERSION}`;
 
