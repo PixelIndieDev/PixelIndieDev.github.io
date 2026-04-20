@@ -11,9 +11,11 @@ refreshHeartsBackgroundSize();
 window.addEventListener('load', function() {
     errorPage = document.querySelector('.error-page');
     // if error page, then always show the loading screen
+    minimumWaitTime = 300;
+    // minimumWaitTime = 9999999999;
     if (!errorPage) {
         // minimum wait time
-        const minTimer = new Promise(resolve => setTimeout(resolve, 300));
+        const minTimer = new Promise(resolve => setTimeout(resolve, minimumWaitTime));
         const pageLoaded = new Promise(resolve => resolve());
 
         Promise.all([minTimer, pageLoaded]).then(() => {

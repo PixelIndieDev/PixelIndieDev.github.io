@@ -72,6 +72,17 @@ body {
 	z-index: 500;
 }
 
+.menu > .slideInto {
+  	animation: fade-in-left 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  	animation-delay: calc(var(--item-index) * 0.05s);
+}
+
+.menu > .slideInto:nth-child(1) { --item-index: 1; }
+.menu > .slideInto:nth-child(2) { --item-index: 2; }
+.menu > .slideInto:nth-child(3) { --item-index: 3; }
+.menu > .slideInto:nth-child(4) { --item-index: 4; }
+.menu > .slideInto:nth-child(5) { --item-index: 5; }
+
 h1 {
 	font-size: 2.2vw;
 	text-decoration: none;
@@ -171,18 +182,18 @@ li:hover span {
 .socialIcons svg {
 	width: 100%;
 	height: 100%;
+	fill: #3e8c88;
 }
 
 /* buttons */
 /* original by Madflows*/
 /* edited */
-.menu > a,
+.menu > .slideInto > a,
 .backbuttonError {
 	position: relative;
 	display: flex;
 	cursor: pointer;
 	outline: none;
-	border: 0;
 	vertical-align: middle;
 	text-align: center;
 	text-decoration: none;
@@ -192,10 +203,7 @@ li:hover span {
 	width: 8vw;
 	align-items: center;
     justify-content: center;
-}
 
-.menu > a,
-.backbuttonError {
 	font-weight: 600;
 	user-select: none;
 	color: #3e8c88;
@@ -206,11 +214,11 @@ li:hover span {
 	border-radius: 0.5vw;
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
-	-webkit-transition: background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
+	-webkit-transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
 	transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
 }
 
-.menu > a::before,
+.menu > .slideInto > a::before,
 .backbuttonError::before {
 	position: absolute;
 	content: '';
@@ -229,14 +237,14 @@ li:hover span {
 	transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
 }
 
-.menu > a:hover,
+.menu > .slideInto > a:hover,
 .backbuttonError:hover {
 	background: #15BCB9;
 	-webkit-transform: translate(0, 0.15vw);
 	transform: translate(0, 0.15vw);
 }
 
-.menu > a:hover::before,
+.menu > .slideInto > a:hover::before,
 .backbuttonError:hover::before {
 	-webkit-box-shadow: 0 0 0 0.1vw #00000050, 0 0.5vw 0 0 #00000010;
 	box-shadow: 0 0 0 0.1vw #00000050, 0 0.5vw 0 0 #00000010;
@@ -244,14 +252,14 @@ li:hover span {
 	transform: translate3d(0, 0.5vw, -1vw);
 }
 
-.menu > a:active,
+.menu > .slideInto > a:active,
 .backbuttonError:active {
 	background: #116460;
 	-webkit-transform: translate(0, 0.7vw);
 	transform: translate(0, 0.7vw);
 }
 
-.menu > a:active::before,
+.menu > .slideInto > a:active::before,
 .backbuttonError:active::before {
 	-webkit-box-shadow: 0 0 0 0.1vw #00000050, 0 0 #00000010;
 	box-shadow: 0 0 0 0.1vw #00000050, 0 0 #00000010;
@@ -259,23 +267,26 @@ li:hover span {
 	transform: translate3d(0, 0, -1vw);
 }
 
-.menu .longButton {
+.menu > .slideInto > .longButton {
 	width: 12vw;
+	height: 2vh;
 	text-align: left;
 	display: inline-flex;
 	align-items: center;
   	justify-content: space-between;
 }
 
-.menu > a > svg {
+.menu > .slideInto > a > svg {
 	width: 1.5vw;
 	height: 1.5vw;
 	user-select: none;
+	fill: #3e8c88;
 }
 
-.menu .backbutton {
+.menu > .slideInto > .backbutton {
 	margin-top: 2vh;
 }
+
 
 /* responsives */
 @media (max-aspect-ratio: 1800/1300) {
@@ -301,12 +312,12 @@ li:hover span {
 		height: 3.5vw;
 		padding: 0 1vw;
 	}
-	.menu > a,
+	.menu > .slideInto > a,
 	.backbuttonError {
 		font-size: 1vw;
 		width: 15vw;
 	}
-	.menu .longButton {
+	.menu > .slideInto > .longButton {
 		width: 17vw;
 	}
 }
@@ -350,7 +361,7 @@ li:hover span {
 	.socialIcons > a:hover {
 		scale: 1;
 	}
-	.menu > a,
+	.menu > .slideInto > a,
 	.backbuttonError {
 		font-size: 2.5vw;
 		margin: 0.5vw;
@@ -361,10 +372,11 @@ li:hover span {
 		font-size: 3vw;
 		padding-bottom: 4vh;
 	}
-	.menu .longButton {
+	.menu > .slideInto > .longButton {
 		width: 60vw;
+		height: 4vh;
 	}
-	.menu > a > svg {
+	.menu > .slideInto > a > svg {
 		width: 3vw;
 		height: 3vw;
 	}
@@ -378,7 +390,7 @@ li:hover span {
 		font-size: 5vw;
 		margin-bottom: 4vh;
 	}
-	.menu > a,
+	.menu > .slideInto > a,
 	.backbuttonError {
 		font-size: 4vw;
 		margin: 0.5vw;
@@ -400,10 +412,11 @@ li:hover span {
 		font-size: 5vw;
 		padding-bottom: 4vh;
 	}
-	.menu .longButton {
+	.menu > .slideInto > .longButton {
 		width: 60vw;
+		height: 6vh;
 	}
-	.menu > a > svg {
+	.menu > .slideInto > a > svg {
 		width: 5vw;
 		height: 5vw;
 	}
@@ -416,3 +429,14 @@ li:hover span {
  * w: http://animista.net, t: @cssanimista
  * ---------------------------------------------- */
 @keyframes entranceContent{0%{-webkit-transform:translateX(-100vw);transform:translateX(-100vw)}100%{-webkit-transform:translateX(0);transform:translateX(0)}}
+
+@keyframes fade-in-left {
+    0% {
+		opacity: 0;
+        translate: -50px 0 0;
+    }
+    100% {
+		opacity: 1;
+        translate: 0 0 0;
+    }
+}
