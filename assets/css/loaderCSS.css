@@ -1,7 +1,7 @@
 .loader {
   position: fixed;
   width: 40vw;
-  height: 30vh;
+  height: 40vh;
 	display: flex;
 	flex-direction: column;
 	z-index: 5;
@@ -101,8 +101,10 @@
     height: 15vw;
   }
   .searching {
-    width: 20vw;
     height: 10vw;
+  }
+  .errorLoadingText {
+    font-size: 5vw;
   }
 }
 @media (max-aspect-ratio: 1100/1300) {
@@ -118,8 +120,10 @@
     height: 25vw;
   }
   .searching {
-    width: 25vw;
     height: 10vw;
+  }
+  .errorLoadingText {
+    font-size: 7vw;
   }
 }
 @media (max-aspect-ratio: 700/1300) {
@@ -135,8 +139,15 @@
     height: 30vw;
   }
   .searching {
-    width: 30vw;
     height: 15vw;
+  }
+  .errorLoadingText {
+    font-size: 7vw;
+  }
+}
+@media (max-aspect-ratio: 604/1300) {
+  .loader {
+    top: 30vh;
   }
 }
 
