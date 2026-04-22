@@ -2,6 +2,9 @@
   position: fixed;
   width: 40vw;
   height: 40vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 	display: flex;
 	flex-direction: column;
 	z-index: 5;
@@ -143,11 +146,6 @@
   }
   .errorLoadingText {
     font-size: 7vw;
-  }
-}
-@media (max-aspect-ratio: 604/1300) {
-  .loader {
-    top: 30vh;
   }
 }
 

@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v5';
+const CACHE_VERSION = 'v6';
 const STATIC_CACHE = `piggy-static-${CACHE_VERSION}`;
 const PAGES_CACHE = `piggy-pages-${CACHE_VERSION}`;
 
@@ -9,7 +9,7 @@ const PRECACHE_ASSETS = [
     '/assets/images/background/nature_combined.svg',
     '/assets/images/background/OtherBackgroundLayers.svg',
     '/assets/images/background/sims/plumbob.svg',
-    '/assets/images/background/sims/backgroundImageSims.jpg',
+    '/assets/images/background/sims/backgroundImageSims.avif',
     '/assets/css/loaderCSS.css',
     '/assets/css/mainCSS.css',
     '/assets/css/piggyCSS.css',
