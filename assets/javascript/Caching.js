@@ -23,7 +23,15 @@ const PRECACHE_ASSETS = [
 ];
 
 self.addEventListener('install', event => {
-    event.waitUntil(caches.open(STATIC_CACHE).then(cache => cache.addAll(PRECACHE_ASSETS)).then(() => self.skipWaiting()));
+    event.waitUntil(
+        caches.open(STATIC_CACHE).then(cache =>
+            Promise.allSettled(
+                PRECACHE_ASSETS.map(asset =>
+                    cache.add(asset).catch(err => console.warn('Failed to precache:', asset, err))
+                )
+            )
+        ).then(() => self.skipWaiting())
+    );
 });
 
 self.addEventListener('activate', event => {
