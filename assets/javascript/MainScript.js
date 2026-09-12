@@ -234,10 +234,9 @@ function attachLinks() {
         });
     });
 
-    document.querySelectorAll('.menu > a').forEach(btn => {
-        btn.addEventListener('mousedown', function() {
-            _pressedButton = this;
-        });
+    document.querySelector('.menu').addEventListener('mousedown', (e) => {
+        const btn = e.target.closest('a');
+        if (btn) _pressedButton = btn;
     });
 }
 
