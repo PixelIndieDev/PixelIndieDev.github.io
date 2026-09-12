@@ -5,8 +5,13 @@ window.recallTriggers_Stats = function() {
     const offsetY = 5;
 
     if (card) {
+        let rect = null;
+        card.addEventListener('mouseenter', () => {
+            rect = card.getBoundingClientRect();
+        });
+
         card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
+            if (!rect) rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
