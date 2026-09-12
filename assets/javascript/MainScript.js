@@ -75,17 +75,41 @@ for (let i = 0; i < heartsAmount; i++) {
     hearts.push(h);
 }
 
+const heartSpriteCache = new Map();
+const SPRITE_SIZE_STEP = 2;
+function getHeartSprite(size, color) {
+    const dpr = window.devicePixelRatio || 1;
+    const bucketedSize = Math.round(size / SPRITE_SIZE_STEP) * SPRITE_SIZE_STEP;
+    const key = bucketedSize + '_' + color;
+    const cached = heartSpriteCache.get(key);
+    if (cached) return cached;
+    const padding = bucketedSize * 0.6;
+    const boxSize = bucketedSize + padding;
+    const spriteCanvas = document.createElement('canvas');
+    spriteCanvas.width = boxSize * dpr;
+    spriteCanvas.height = boxSize * dpr;
+    const sctx = spriteCanvas.getContext('2d');
+    sctx.scale(dpr, dpr);
+    sctx.translate(boxSize / 2, boxSize / 2);
+    sctx.fillStyle = color;
+    sctx.beginPath();
+    sctx.moveTo(0, -bucketedSize * 0.25);
+    sctx.bezierCurveTo(bucketedSize * 0.5, -bucketedSize * 0.75, bucketedSize, -bucketedSize * 0.1, 0, bucketedSize * 0.5);
+    sctx.bezierCurveTo(-bucketedSize, -bucketedSize * 0.1, -bucketedSize * 0.5, -bucketedSize * 0.75, 0, -bucketedSize * 0.25);
+    sctx.fill();
+    heartSpriteCache.set(key, spriteCanvas);
+    return spriteCanvas;
+}
+
 function drawHeart(x, y, size, color, opacity, rotation) {
+    const sprite = getHeartSprite(size, color);
+    const dpr = window.devicePixelRatio || 1;
+    const drawSize = sprite.width / dpr;
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(rotation);
     ctx.globalAlpha = opacity;
-    ctx.fillStyle = color;
-    ctx.beginPath();
-    ctx.moveTo(0, -size * 0.25);
-    ctx.bezierCurveTo(size * 0.5, -size * 0.75, size, -size * 0.1, 0, size * 0.5);
-    ctx.bezierCurveTo(-size, -size * 0.1, -size * 0.5, -size * 0.75, 0, -size * 0.25);
-    ctx.fill();
+    ctx.drawImage(sprite, -drawSize / 2, -drawSize / 2, drawSize, drawSize);
     ctx.restore();
 }
 
