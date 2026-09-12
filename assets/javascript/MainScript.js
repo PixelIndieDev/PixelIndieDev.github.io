@@ -50,7 +50,7 @@ const hearts = [];
 
 const heartsAmount = 50;
 const heartsSize = 30;
-const heartsFallSpeed = 0.4;
+const heartsFallSpeed = 0.45;
 const heartsSwaySpeed = 0.01;
 
 function Heart() {
