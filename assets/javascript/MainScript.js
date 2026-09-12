@@ -90,19 +90,22 @@ function drawHeart(x, y, size, color, opacity, rotation) {
     ctx.restore();
 }
 
-function animate() {
+let lastTime = performance.now();
+function animate(now) {
+    const delta = (now - lastTime) / (1000 / 60);
+    lastTime = now;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     hearts.forEach(h => {
-        h.angle += h.swaySpeed;
-        h.x += Math.sin(h.angle) * h.sway;
-        h.y += h.speed;
-        h.rotation += 0.005;
+        h.angle += h.swaySpeed * delta;
+        h.x += Math.sin(h.angle) * h.sway * delta;
+        h.y += h.speed * delta;
+        h.rotation += 0.005 * delta;
         if (h.y > canvas.height + 30) h.reset();
         drawHeart(h.x, h.y, h.size, h.color, h.opacity, h.rotation);
     });
     requestAnimationFrame(animate);
 }
-animate();
+requestAnimationFrame(animate);
 
 window.addEventListener('resize', () => {
     const scaleX = window.innerWidth / canvas.width;
