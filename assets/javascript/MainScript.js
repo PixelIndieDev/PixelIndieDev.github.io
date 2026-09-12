@@ -47,7 +47,6 @@ window.addEventListener('load', function() {
 
 // hearts on the background
 const hearts = [];
-const colors = ['#ffffff', '#f5ffff', '#eefefe', '#ffffff', '#f0fffe'];
 
 const heartsAmount = 50;
 const heartsSize = 30;
