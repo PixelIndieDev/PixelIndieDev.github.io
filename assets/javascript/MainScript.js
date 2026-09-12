@@ -166,7 +166,6 @@ function navigateTo(url) {
                 const existingClass = existingChild.getAttribute('class') || "";
                 if (!newChildren.some(c => (c.getAttribute('class') || "") === existingClass)) {
                     if (!existingChild.classList.contains('eyes')) {
-                        console.log("Piggy Technical | removed piggy part named: " + existingClass);
                         existingChild.remove();
                     }
                 }
@@ -189,7 +188,6 @@ function navigateTo(url) {
 
             const scripts = newContent.querySelectorAll('script');  
             if (scripts.length === 0) {
-                console.log("No new scripts");
                 runRecallTriggers();
             } else {
                 let scriptsLoaded = 0;
