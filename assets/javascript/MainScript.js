@@ -130,16 +130,18 @@ function animate(now) {
 }
 requestAnimationFrame(animate);
 
+let resizeTimeout = null;
 window.addEventListener('resize', () => {
-    const scaleX = window.innerWidth / canvas.width;
-    const scaleY = window.innerHeight / canvas.height;
-
-    hearts.forEach(h => {
-        h.x *= scaleX;
-        h.y *= scaleY;
-    });
-    
-    refreshHeartsBackgroundSize();
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        const scaleX = window.innerWidth / canvas.width;
+        const scaleY = window.innerHeight / canvas.height;
+        hearts.forEach(h => {
+            h.x *= scaleX;
+            h.y *= scaleY;
+        });
+        refreshHeartsBackgroundSize();
+    }, 150);
 });
 
 // content switching
