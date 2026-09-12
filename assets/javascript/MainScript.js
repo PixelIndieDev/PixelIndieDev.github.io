@@ -115,7 +115,7 @@ function drawHeart(x, y, size, color, opacity, rotation) {
 
 let lastTime = performance.now();
 function animate(now) {
-    const delta = (now - lastTime) / (1000 / 60);
+    const delta = Math.min((now - lastTime) / (1000 / 60), 5);
     lastTime = now;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     hearts.forEach(h => {
