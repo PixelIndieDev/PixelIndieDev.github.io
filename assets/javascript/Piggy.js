@@ -199,56 +199,26 @@ document.addEventListener('mouseleave', (event) => {
     }
 });
 
-function switchEmotion(newEmotion) {
-    piggyEmotion = newEmotion;
+const emotionAssets = {
+    [Emotion.NEUTRAL]: { eyes: eyes_neutral, mouth: mouth_neutral },
+    [Emotion.SMILE]: { eyes: eyes_neutral, mouth: mouth_smile },
+    [Emotion.HAPPY]: { eyes: eyes_neutral, mouth: mouth_happy },
+    [Emotion.HEARTS]: { eyes: eyes_hearts, mouth: mouth_happy },
+    [Emotion.SAD]: { eyes: eyes_sad, mouth: mouth_sad },
+    [Emotion.DROOLING]: { eyes: eyes_drooling, mouth: mouth_drooling },
+    [Emotion.ANGRY]: { eyes: eyes_angry, mouth: mouth_neutral },
+    [Emotion.SHOCKED]: { eyes: eyes_shocked, mouth: mouth_shocked },
+};
 
-    switch (piggyEmotion) {
-        case Emotion.NEUTRAL:
-            eyeElement.setAttribute('href', eyes_neutral);
-            mouthElement.setAttribute('href', mouth_neutral);
-            removeAnimClasses();
-            break;
-        case Emotion.SMILE:
-            eyeElement.setAttribute('href', eyes_neutral);
-            mouthElement.setAttribute('href', mouth_smile);
-            removeAnimClasses();
-            break;
-        case Emotion.HAPPY:
-            eyeElement.setAttribute('href', eyes_neutral);
-            mouthElement.setAttribute('href', mouth_happy);
-            removeAnimClasses();
-            break;
-        case Emotion.HEARTS:
-            eyeElement.setAttribute('href', eyes_hearts);
-            mouthElement.setAttribute('href', mouth_happy);
-            removeAnimClasses();
-            eyeElement.parentElement.classList.add("hearteyes");
-            break;
-        case Emotion.SAD:
-            eyeElement.setAttribute('href', eyes_sad);
-            mouthElement.setAttribute('href', mouth_sad);
-            removeAnimClasses();
-            break;
-        case Emotion.DROOLING:
-            eyeElement.setAttribute('href', eyes_drooling);
-            mouthElement.setAttribute('href', mouth_drooling);
-            removeAnimClasses();
-            break;
-        case Emotion.ANGRY:
-            eyeElement.setAttribute('href', eyes_angry);
-            mouthElement.setAttribute('href', mouth_neutral);
-            removeAnimClasses();
-            noseElement.classList.add("snoutWiggle");
-            break;
-        case Emotion.SHOCKED:
-            eyeElement.setAttribute('href', eyes_shocked);;
-            mouthElement.setAttribute('href', mouth_shocked);
-            removeAnimClasses();
-            break;
-        default:
-            piggyEmotion = Emotion.NEUTRAL;
-            break;
-    }
+function switchEmotion(newEmotion) {
+    const cfg = emotionAssets[newEmotion];
+    piggyEmotion = cfg ? newEmotion : Emotion.NEUTRAL;
+    const { eyes, mouth } = emotionAssets[piggyEmotion];
+    eyeElement.setAttribute('href', eyes);
+    mouthElement.setAttribute('href', mouth);
+    removeAnimClasses();
+    if (piggyEmotion === Emotion.HEARTS) eyeElement.parentElement.classList.add('hearteyes');
+    if (piggyEmotion === Emotion.ANGRY) noseElement.classList.add('snoutWiggle');
 }
 
 function removeAnimClasses() {
