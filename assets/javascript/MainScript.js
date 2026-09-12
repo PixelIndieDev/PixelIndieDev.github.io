@@ -151,11 +151,9 @@ function navigateTo(url) {
         const doc = parser.parseFromString(html, 'text/html');
         const newContent = doc.querySelector('.content');
 
+        const existingHrefs = new Set([...document.querySelectorAll('link[rel="stylesheet"]')].map(l => l.getAttribute('href')));
         const incomingLinks = [...newContent.querySelectorAll('link[rel="stylesheet"]')];
-        const pendingLinks = incomingLinks.filter(link => {
-            const href = link.getAttribute('href');
-            return !document.querySelector(`link[rel="stylesheet"][href="${href}"]`);
-        });
+        const pendingLinks = incomingLinks.filter(link => !existingHrefs.has(link.getAttribute('href')));
 
         function doSwap() {
             const newPiggy = doc.querySelector('.piggy');
