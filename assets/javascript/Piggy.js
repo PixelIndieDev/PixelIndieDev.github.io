@@ -174,23 +174,30 @@ window.resetPiggyEmotion = function() {
 }
 
 // eye movements
-window.addEventListener('mousemove', (e) => {
-    const cursorX = e.pageX;
-    const cursorY = e.pageY;
+function updateEyePosition(cursorX, cursorY) {
     const dx = (cursorX - pageCenteredX) + staticEyeOffset_X;
     const dy = (cursorY - pageCenteredY) + staticEyeOffset_Y;
-    
     const dist = Math.sqrt(dx * dx + dy * dy);
     const remapDist = Math.min(Math.max((dist - minDistanceAway) / (maxDistanceAway - minDistanceAway), 0), 1);
     const scale = dist > 0 ? (remapDist * max_eyeOffset) / dist : 0;
-    
     const offsetX = dx * scale;
     const offsetY = dy * scale;
     eyeElement.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-    if (piggyEmotion == Emotion.SAD) {
-        switchEmotion(Emotion.NEUTRAL);
+    if (piggyEmotion == Emotion.SAD) switchEmotion(Emotion.NEUTRAL);
+}
+
+let mouseX = 0, mouseY = 0, ticking = false;
+window.addEventListener('mousemove', (e) => {
+    mouseX = e.pageX;
+    mouseY = e.pageY;
+    if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+            updateEyePosition(mouseX, mouseY);
+            ticking = false;
+        });
     }
-});
+}, { passive: true });
  
 document.addEventListener('mouseleave', (event) => {
     eyeElement.style.transform = 'translate(0px, 0px)';
