@@ -226,12 +226,11 @@ function runRecallTriggers() {
 
 function attachLinks() {
     // don't add 404 error page button to the selectors, force website refresh
-    document.querySelectorAll('.content a').forEach(link => {
-        if (link.origin !== window.location.origin) return;
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            navigateTo(this.href);
-        });
+    document.body.addEventListener('click', (e) => {
+        const link = e.target.closest('.content a');
+        if (!link || link.origin !== window.location.origin) return;
+        e.preventDefault();
+        navigateTo(link.href);
     });
 
     document.querySelector('.menu').addEventListener('mousedown', (e) => {
