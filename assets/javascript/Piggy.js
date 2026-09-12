@@ -186,24 +186,26 @@ function updateEyePosition(cursorX, cursorY) {
     if (piggyEmotion == Emotion.SAD) switchEmotion(Emotion.NEUTRAL);
 }
 
-let mouseX = 0, mouseY = 0, ticking = false;
+let mouseX = 0, mouseY = 0, ticking = false, leftWindow = false, eyeAnimFrame = null;
 window.addEventListener('mousemove', (e) => {
+    leftWindow = false;
     mouseX = e.pageX;
     mouseY = e.pageY;
     if (!ticking) {
         ticking = true;
-        requestAnimationFrame(() => {
-            updateEyePosition(mouseX, mouseY);
+        eyeAnimFrame = requestAnimationFrame(() => {
+            if (!leftWindow) updateEyePosition(mouseX, mouseY);
             ticking = false;
         });
     }
 }, { passive: true });
  
 document.addEventListener('mouseleave', (event) => {
+    leftWindow = true;
+    if (eyeAnimFrame) cancelAnimationFrame(eyeAnimFrame);
+    ticking = false;
     eyeElement.style.transform = 'translate(0px, 0px)';
-    if (event.clientY <= 0) {
-        switchEmotion(Emotion.SAD);
-    }
+    if (event.clientY <= 0) switchEmotion(Emotion.SAD);
 });
 
 const emotionAssets = {
