@@ -241,7 +241,6 @@ function runRecallTriggers() {
     if (typeof resetPiggyEmotion === 'function') resetPiggyEmotion();
     if (typeof recallTriggers === 'function') recallTriggers();
     if (typeof recallTriggers_Stats === 'function') recallTriggers_Stats();
-    attachLinks();
     checkAlreadyHovered();
 }
 
