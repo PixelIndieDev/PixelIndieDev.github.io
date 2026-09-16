@@ -120,17 +120,31 @@
 
 @media (max-aspect-ratio: 1500/1300) {
   .piggy {
-    opacity: 0;
     width: 100vw;
     height: 45vw;
-    right: 0vw;
-    bottom: 10vh;
+    left: -60vw;
+    bottom: 0vh;
     translate: 0 100vh;
+    rotate: 15deg;
     transition: none;
   }
   .hitbox {
     pointer-events: none;
     cursor: none;
+  }
+}
+
+@media (max-aspect-ratio: 750/1300) {
+  .piggy {
+    left: -80vw;
+  }
+}
+
+@media (max-aspect-ratio: 500/1300) {
+  .piggy {
+    width: 110vw;
+    height: 55vw;
+    left: -90vw;
   }
 }
 

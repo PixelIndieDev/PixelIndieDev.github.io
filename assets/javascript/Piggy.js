@@ -4,6 +4,8 @@ const staticEyeOffset_Y = 175;
 const minDistanceAway = 100;
 const maxDistanceAway = 600;
 
+const isPiggyOnMobile = window.matchMedia('(max-aspect-ratio: 1500/1300)');
+
 const eyeElement = document.querySelector('.eyes use');
 const piggyElement = document.querySelector('.piggy');
 let pageCenteredX = window.innerWidth * 0.5;
@@ -188,6 +190,7 @@ function updateEyePosition(cursorX, cursorY) {
 
 let mouseX = 0, mouseY = 0, ticking = false, leftWindow = false, eyeAnimFrame = null;
 window.addEventListener('mousemove', (e) => {
+    if (isPiggyOnMobile.matches) return;
     leftWindow = false;
     mouseX = e.pageX;
     mouseY = e.pageY;
@@ -199,6 +202,14 @@ window.addEventListener('mousemove', (e) => {
         });
     }
 }, { passive: true });
+
+isPiggyOnMobile.addEventListener('change', (e) => {
+    if (e.matches) {
+        if (eyeAnimFrame) cancelAnimationFrame(eyeAnimFrame);
+        ticking = false;
+        eyeElement.style.transform = 'translate(0px, 0px)';
+    }
+});
  
 document.addEventListener('mouseleave', (event) => {
     leftWindow = true;
