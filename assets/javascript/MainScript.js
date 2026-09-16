@@ -184,6 +184,7 @@ function navigateTo(url) {
             newPiggy.style.animation = 'none';
 
             document.querySelector('.content').replaceWith(newContent);
+            document.title = doc.title;
             history.pushState({}, '', url);
 
             const scripts = newContent.querySelectorAll('script');  
