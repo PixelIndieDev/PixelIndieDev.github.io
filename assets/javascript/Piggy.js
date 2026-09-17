@@ -18,7 +18,6 @@ function recalcEyeCenter() {
     pageCenteredY = eyes_absoluteTop + rect.height / 2;
 }
 
-recalcEyeCenter();
 piggyElement.addEventListener('animationend', recalcEyeCenter, { once: true });
 
 let resizeFrame = null;
