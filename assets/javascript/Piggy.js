@@ -1,6 +1,4 @@
 const max_eyeOffset = 50;
-const staticEyeOffset_X = 0;
-const staticEyeOffset_Y = 175;
 const minDistanceAway = 100;
 const maxDistanceAway = 600;
 
@@ -20,7 +18,14 @@ function recalcEyeCenter() {
     pageCenteredY = eyes_absoluteTop + rect.height / 2;
 }
 
+recalcEyeCenter();
 piggyElement.addEventListener('animationend', recalcEyeCenter, { once: true });
+
+let resizeFrame = null;
+window.addEventListener('resize', () => {
+    if (resizeFrame) cancelAnimationFrame(resizeFrame);
+    resizeFrame = requestAnimationFrame(recalcEyeCenter);
+});
 
 const mouthElement = document.querySelector('.mouth use');
 const noseElement = document.querySelector('.nose');
@@ -177,8 +182,8 @@ window.resetPiggyEmotion = function() {
 
 // eye movements
 function updateEyePosition(cursorX, cursorY) {
-    const dx = (cursorX - pageCenteredX) + staticEyeOffset_X;
-    const dy = (cursorY - pageCenteredY) + staticEyeOffset_Y;
+    const dx = cursorX - pageCenteredX;
+    const dy = cursorY - pageCenteredY;
     const dist = Math.sqrt(dx * dx + dy * dy);
     const remapDist = Math.min(Math.max((dist - minDistanceAway) / (maxDistanceAway - minDistanceAway), 0), 1);
     const scale = dist > 0 ? (remapDist * max_eyeOffset) / dist : 0;
