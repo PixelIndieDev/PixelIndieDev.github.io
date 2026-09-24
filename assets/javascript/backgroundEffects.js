@@ -94,4 +94,3 @@ window.recallTriggers_backgroundEffects = function() {
     }
 }
 recallTriggers_backgroundEffects();
-// document.querySelector(".piggy")?.classList.add("simsShadow");
