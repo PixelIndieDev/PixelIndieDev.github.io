@@ -1,3 +1,20 @@
+:root {
+  --cyberpunkBodyShadowSize: 2vw;
+  --cyberpunkNoseShadowSize: 0.5vw;
+  --cyberpunkGlassesShadowSize: 0.8vw;
+
+  --cyberpunkShadowBlurSize: 0.2vw;
+
+  --cyberpunkShadowBody: calc(var(--cyberpunkBodyShadowSize)*1.5) var(--cyberpunkBodyShadowSize) var(--cyberpunkShadowBlurSize);
+  --cyberpunkShadowNose: calc(var(--cyberpunkNoseShadowSize)*2) var(--cyberpunkNoseShadowSize) var(--cyberpunkShadowBlurSize);
+  --cyberpunkShadowGlasses: var(--cyberpunkGlassesShadowSize) var(--cyberpunkGlassesShadowSize) var(--cyberpunkShadowBlurSize);
+
+  --cyberpunkShadowColor: #000000ce;
+
+  --cyberpunkShadowTransition: ease;
+  --cyberpunkShadowTransitionTime: 0.4s;
+}
+
 /* piggy */
 .piggy {
   position: absolute;
@@ -8,7 +25,7 @@
   right: 0vw;
   bottom: 0vh;
   translate: 0 100vh;
-  transition: opacity 0.5s ease, visibility 0.5s;
+  transition: opacity 0.5s ease, visibility 0.5s, filter var(--cyberpunkShadowTransitionTime) var(--cyberpunkShadowTransition);
   animation: entrancePiggy 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   z-index: 100;
   max-width: 100vh;
@@ -29,15 +46,29 @@
 
 .piggy .nose {
   cursor: grab;
+  transition: filter var(--cyberpunkShadowTransitionTime) var(--cyberpunkShadowTransition);
 }
 
 .piggy .glasses {
   cursor: grab;
+  transition: filter var(--cyberpunkShadowTransitionTime) var(--cyberpunkShadowTransition);
 }
 
 .piggy .glassesCracks {
   opacity: 0;
   transition: opacity 0.1s ease;
+}
+
+.piggy.cyberpunkShadow {
+  filter: drop-shadow(var(--cyberpunkShadowBody) var(--cyberpunkShadowColor));
+}
+
+.piggy.cyberpunkShadow .nose {
+  filter: drop-shadow(var(--cyberpunkShadowNose) var(--cyberpunkShadowColor));
+}
+
+.piggy.cyberpunkShadow .glasses {
+  filter: drop-shadow(var(--cyberpunkShadowGlasses) var(--cyberpunkShadowColor));
 }
 
 .hitbox {

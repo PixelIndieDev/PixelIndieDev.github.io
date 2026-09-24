@@ -6,6 +6,7 @@ window.recallTriggers_backgroundEffects = function() {
             cyberpunkElements.forEach(a => {
                 a.classList.add("appearOnScreen");
             });
+            document.querySelector(".piggy")?.classList.add("cyberpunkShadow");
         });
 
         TriggerCyberpunk.addEventListener('mouseleave', () => {
@@ -13,6 +14,7 @@ window.recallTriggers_backgroundEffects = function() {
             cyberpunkElements.forEach(a => {
                 a.classList.remove("appearOnScreen");
             });
+            document.querySelector(".piggy")?.classList.remove("cyberpunkShadow");
         })
     }
 
