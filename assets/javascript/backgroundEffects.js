@@ -26,6 +26,7 @@ window.recallTriggers_backgroundEffects = function() {
             simsElements.forEach(a => {
                 a.classList.add("appearOnScreen");
             });
+            document.querySelector(".piggy")?.classList.add("simsShadow");
         });
 
         TriggerSims.addEventListener('mouseleave', () => {
@@ -33,6 +34,7 @@ window.recallTriggers_backgroundEffects = function() {
             simsElements.forEach(a => {
                 a.classList.remove("appearOnScreen");
             });
+            document.querySelector(".piggy")?.classList.remove("simsShadow");
         })
     }
 
@@ -92,3 +94,4 @@ window.recallTriggers_backgroundEffects = function() {
     }
 }
 recallTriggers_backgroundEffects();
+// document.querySelector(".piggy")?.classList.add("simsShadow");

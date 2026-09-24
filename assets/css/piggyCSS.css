@@ -4,12 +4,18 @@
   --cyberpunkGlassesShadowSize: 0.8vw;
 
   --cyberpunkShadowBlurSize: 0.2vw;
+  --simsShadowBlurSize: 0.3vw;
 
-  --cyberpunkShadowBody: calc(var(--cyberpunkBodyShadowSize)*1.5) var(--cyberpunkBodyShadowSize) var(--cyberpunkShadowBlurSize);
+  --cyberpunkShadowBody: var(--cyberpunkBodyShadowSize) calc(var(--cyberpunkBodyShadowSize)*0.65) var(--cyberpunkShadowBlurSize);
   --cyberpunkShadowNose: calc(var(--cyberpunkNoseShadowSize)*2) var(--cyberpunkNoseShadowSize) var(--cyberpunkShadowBlurSize);
   --cyberpunkShadowGlasses: var(--cyberpunkGlassesShadowSize) var(--cyberpunkGlassesShadowSize) var(--cyberpunkShadowBlurSize);
 
-  --cyberpunkShadowColor: #000000ce;
+  --simsShadowBody: calc(var(--cyberpunkBodyShadowSize)*0.4) calc(var(--cyberpunkBodyShadowSize)*0.4) var(--simsShadowBlurSize);
+  --simsShadowNose: calc(var(--cyberpunkNoseShadowSize)*1.5) calc(var(--cyberpunkNoseShadowSize)*0.4) var(--simsShadowBlurSize);
+  --simsShadowGlasses: calc(var(--cyberpunkGlassesShadowSize)*0.5) calc(var(--cyberpunkGlassesShadowSize)*0.4) var(--simsShadowBlurSize);
+
+  --cyberpunkShadowColor: #00000065;
+  --simsShadowColor: #00000065;
 
   --cyberpunkShadowTransition: ease;
   --cyberpunkShadowTransitionTime: 0.4s;
@@ -69,6 +75,18 @@
 
 .piggy.cyberpunkShadow .glasses {
   filter: drop-shadow(var(--cyberpunkShadowGlasses) var(--cyberpunkShadowColor));
+}
+
+.piggy.simsShadow {
+  filter: drop-shadow(var(--simsShadowBody) var(--simsShadowColor));
+}
+
+.piggy.simsShadow .nose {
+  filter: drop-shadow(var(--simsShadowNose) var(--simsShadowColor));
+}
+
+.piggy.simsShadow .glasses {
+  filter: drop-shadow(var(--simsShadowGlasses) var(--simsShadowColor));
 }
 
 .hitbox {
