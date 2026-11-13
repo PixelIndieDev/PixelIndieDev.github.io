@@ -156,6 +156,7 @@ const mouth_sad = 'assets/images/Piggy_Full.svg#mouth-sad';
 const mouth_drooling = 'assets/images/Piggy_Full.svg#mouth-drooling';
 const mouth_shocked = 'assets/images/Piggy_Full.svg#mouth-shocked';
 
+let hoverOverTimer = null;
 window.recallTriggers = function() {
     const triggerMap = {
         ".Trigger_heart": Emotion.HEARTS,
@@ -168,8 +169,25 @@ window.recallTriggers = function() {
     Object.entries(triggerMap).forEach(([selector, emotion]) => {
         const elements = document.querySelectorAll(selector);
         elements.forEach(el => {
-            el.addEventListener("mouseenter", () => switchEmotion(emotion));
-            el.addEventListener("mouseleave", () => switchEmotion(Emotion.NEUTRAL));
+            el.addEventListener("mouseenter", () => {
+                if (hoverOverTimer) {
+                    clearTimeout(hoverOverTimer);
+                    hoverOverTimer = null;
+                }
+                switchEmotion(emotion);
+            });
+
+            el.addEventListener("mouseleave", () => {
+                if (hoverOverTimer) {
+                    clearTimeout(hoverOverTimer);
+                }
+                hoverOverTimer = setTimeout(() => {
+                    if (piggyEmotion === emotion) {
+                        switchEmotion(Emotion.NEUTRAL);
+                    }
+                    hoverOverTimer = null;
+                }, 2000);
+            });
         });
     });
 }
