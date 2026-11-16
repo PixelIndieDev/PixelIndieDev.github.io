@@ -1,4 +1,5 @@
-const max_eyeOffset = 50;
+const EYE_OFFSET_RATIO = 0.05;
+let max_eyeOffset = 50;
 const minDistanceAway = 100;
 const maxDistanceAway = 600;
 
@@ -8,6 +9,11 @@ const eyeElement = document.querySelector('.eyes use');
 const piggyElement = document.querySelector('.piggy');
 let pageCenteredX = window.innerWidth * 0.5;
 let pageCenteredY = window.innerHeight * 0.5;
+
+function updateEyeLimit() {
+    max_eyeOffset = piggyElement.offsetWidth * EYE_OFFSET_RATIO;
+}
+updateEyeLimit();
 
 function recalcEyeCenter() {
     const rect = eyeElement.getBoundingClientRect();
@@ -23,7 +29,10 @@ piggyElement.addEventListener('animationend', recalcEyeCenter, { once: true });
 let resizeFrame = null;
 window.addEventListener('resize', () => {
     if (resizeFrame) cancelAnimationFrame(resizeFrame);
-    resizeFrame = requestAnimationFrame(recalcEyeCenter);
+    resizeFrame = requestAnimationFrame(() => {
+        updateEyeLimit();
+        recalcEyeCenter();
+    });
 });
 
 const mouthElement = document.querySelector('.mouth use');
