@@ -186,7 +186,7 @@ window.recallTriggers = function() {
                         switchEmotion(Emotion.NEUTRAL);
                     }
                     hoverOverTimer = null;
-                }, 1000);
+                }, 1200);
             });
         });
     });
