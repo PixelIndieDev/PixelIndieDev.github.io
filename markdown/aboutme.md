@@ -16,7 +16,7 @@ This is the markdown version of https://pixelindiedev.github.io/aboutme.html and
 PixelIndieDev originally used the name 'Pixel', but that name was frequently taken by other users of platforms. At the time he was getting into game development, so he named himself 'PixelIndieDev', which wasn't taken on most platforms. Currently he does not do much game development anymore, but the name sticks.
 
 ## What do you do in your free time?
-PixelIndieDev plays games, but mostly works at hobby programming projects.
+PixelIndieDev plays games, but mostly works on hobby programming projects.
 
 ## Game specific questions
 ### In-general
@@ -28,7 +28,6 @@ Sable main
 ### Sims 4
 He likes the game, but not the pricing tactics of the game.
 
-
 ## What is your gender?
 Male
 
@@ -36,7 +35,10 @@ Male
 The Netherlands
 
 ## What is your favorite music genre?
-PixelIndieDev listen to most genres. He doesn't really have a preference. It depends on the mood of that moment. He can listen to pop, rock, electronic, classic, alternative, hip-hop, and more. He only doesn't like music genres similar to carnival music. He also doesn't like any Dutch music.
+PixelIndieDev listen to most genres. He doesn't really have a preference. It depends on the mood of that moment. He can listen to pop, rock, electronic, classic, alternative, hip-hop, and more. He only doesn't like music genres similar to carnival music. He also doesn't like any Dutch music. He, of course, also doesn't like AI generated music.
+
+## What is a Null Stack Developer?
+Yes
 
 ## What is your stance on AI?
 ### Full explanation
