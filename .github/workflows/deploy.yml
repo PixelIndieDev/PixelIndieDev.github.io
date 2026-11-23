@@ -27,7 +27,7 @@ jobs:
           node-version: '20'
 
       - name: Install Minification Tools
-        run: npm install -g terser csso-cli
+        run: npm install -g terser csso-cli html-minifier-terser
 
       - name: Minify js
         run: |
