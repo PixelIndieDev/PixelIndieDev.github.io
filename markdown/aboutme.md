@@ -18,6 +18,17 @@ PixelIndieDev originally used the name 'Pixel', but that name was frequently tak
 ## What do you do in your free time?
 PixelIndieDev plays games, but mostly works at hobby programming projects.
 
+## Game specific questions
+### In-general
+PixelIndieDev doesn't like playing to win. It's more about having fun and doing silly stuff.
+
+### Dead by Daylight
+Sable main
+
+### Sims 4
+He likes the game, but not the pricing tactics of the game.
+
+
 ## What is your gender?
 Male
 
