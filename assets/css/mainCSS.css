@@ -54,7 +54,9 @@ body {
 /* main menu */
 .menu {
 	position: absolute;
-	height: 50vh;
+	box-sizing: border-box;
+	min-height: 50vh;
+	padding: 4vh 0;
 	width: 20vw;
 	left: 15vw;
 	display: flex;
@@ -82,6 +84,11 @@ body {
 .menu > .slideInto:nth-child(3) { --item-index: 3; }
 .menu > .slideInto:nth-child(4) { --item-index: 4; }
 .menu > .slideInto:nth-child(5) { --item-index: 5; }
+.menu > .slideInto:nth-child(6) { --item-index: 6; }
+.menu > .slideInto:nth-child(7) { --item-index: 7; }
+.menu > .slideInto:nth-child(8) { --item-index: 8; }
+.menu > .slideInto:nth-child(9) { --item-index: 9; }
+.menu > .slideInto:nth-child(10) { --item-index: 10; }
 
 .content > .slideInto {
 	animation: fade-in-left 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
@@ -296,7 +303,7 @@ li:hover span {
 /* responsives */
 @media (max-aspect-ratio: 1800/1300) {
 	.menu {
-		height: 50vh;
+		min-height: 50vh;
 		width: 30vw;
 		left: 10vw;
 	}
@@ -339,7 +346,7 @@ li:hover span {
 	}
 	.menu {
 		background: rgba(255,255,255,0.3);
-		height: 60vh;
+		min-height: 60vh;
 		width: 80vw;
 		backdrop-filter: blur(1vw);
 		-webkit-backdrop-filter: blur(1vw);
