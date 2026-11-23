@@ -1,0 +1,11 @@
+# PixelIndieDev
+> Personal website of PixelIndieDev, an indie game developer, modder and null stack developer.
+The pages below are markdown versions of the website for AI tools and AI crawlers.
+
+## Pages
+- [Home](https://pixelindiedev.github.io/index.md): Overview and social links
+- [About Me and Favorite Games](https://pixelindiedev.github.io/aboutme.md): Personal facts and favorite games
+- [My Mods](https://pixelindiedev.github.io/mymods.md): Links to all his mods
+
+## Socials
+{{socials}}

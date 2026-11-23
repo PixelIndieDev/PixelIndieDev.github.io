@@ -26,6 +26,10 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Generate markdown pages
+        run: |
+          node scripts/generateMarkdown.js . rm -rf markdown scripts
+
       - name: Install Minification Tools
         run: npm install -g terser csso-cli html-minifier-terser
 
