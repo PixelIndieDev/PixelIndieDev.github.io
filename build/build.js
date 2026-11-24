@@ -7,6 +7,7 @@ const { minify: minifyJs } = require('terser');
 const CssProcessor = require('./CssProcessor');
 const ReferenceMangler = require('./ReferenceMangler');
 const AssetVersioner = require('./AssetVersioner');
+const SvgMinifier = require('./SvgMinifier');
 const { walk, escapeRegex } = require('./files');
 
 const BUILD_ID = Date.now().toString(36);
@@ -78,7 +79,7 @@ function reportLeftovers(classMap) {
 
 function reportSizes() {
   const total = (dir, ext) => walk(dir, [ext], ignoreList).reduce((sum, f) => sum + fs.statSync(f).size, 0);
-  for (const ext of ['.html', '.css', '.js']) {
+  for (const ext of ['.html', '.css', '.js', '.svg']) {
     const before = total(srcDir, ext);
     const after = total(distDir, ext);
     console.log(`${ext.padEnd(6)} ${before} -> ${after} bytes (${Math.round((1 - after / before) * 100)}% smaller)`);
@@ -96,6 +97,7 @@ function reportSizes() {
   const classMap = css.process(srcDir, distDir, usageText, collectReservedNames(htmlText));
   const mangler = new ReferenceMangler(classMap);
   const versioner = new AssetVersioner(BUILD_ID);
+  const svgMinifier = new SvgMinifier();
 
   for (const src of walk(srcDir, null, ignoreList)) {
     const dist = path.join(distDir, path.relative(srcDir, src));
@@ -112,11 +114,12 @@ function reportSizes() {
       fs.writeFileSync(dist, result.code);
     } else if (ext === '.webmanifest' || ext === '.json') {
       fs.writeFileSync(dist, JSON.stringify(JSON.parse(fs.readFileSync(src, 'utf8'))));
+    } else if (ext === '.svg') {
++      svgMinifier.minify(src, dist);
     } else {
       fs.copyFileSync(src, dist);
     }
   }
-
   reportLeftovers(classMap);
   reportSizes();
 })().catch(err => {
