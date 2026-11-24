@@ -144,6 +144,41 @@ window.addEventListener('resize', () => {
     }, 150);
 });
 
+class MenuResizer {
+    static RESIZING_CLASS = 'menuResizing';
+    static DURATION_MS = 300; // must match trans time in .menuResizing in mainCSS.css
+
+    static measure() {
+        const menu = document.querySelector('.menu');
+        return menu ? menu.getBoundingClientRect().height : null;
+    }
+
+    static animateFrom(oldHeight) {
+        const menu = document.querySelector('.menu');
+        if (!menu || oldHeight === null) return;
+
+        const newHeight = menu.getBoundingClientRect().height;
+        if (Math.abs(newHeight - oldHeight) < 1) return;
+
+        menu.classList.add(MenuResizer.RESIZING_CLASS);
+        menu.style.height = oldHeight + 'px';
+        void menu.offsetHeight;
+        menu.style.height = newHeight + 'px';
+
+        let finished = false;
+        const finish = () => {
+            if (finished) return;
+            finished = true;
+            menu.classList.remove(MenuResizer.RESIZING_CLASS);
+            menu.style.height = '';
+        };
+        menu.addEventListener('transitionend', (e) => {
+            if (e.target === menu && e.propertyName === 'height') finish();
+        });
+        setTimeout(finish, MenuResizer.DURATION_MS + 100);
+    }
+}
+
 // content switching
 function navigateTo(url) {
     fetch(url).then(res => res.text()).then(html => {
@@ -183,7 +218,9 @@ function navigateTo(url) {
             });
             newPiggy.style.animation = 'none';
 
+            const oldMenuHeight = MenuResizer.measure();
             document.querySelector('.content').replaceWith(newContent);
++           MenuResizer.animateFrom(oldMenuHeight);
             document.title = doc.title;
             history.pushState({}, '', url);
 

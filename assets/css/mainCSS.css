@@ -74,6 +74,11 @@ body {
 	z-index: 500;
 }
 
+.menuResizing {
+	overflow: hidden;
+	transition: height 0.3s ease;
+}
+
 .menu > .slideInto {
   	animation: fade-in-left 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   	animation-delay: calc(var(--item-index) * 0.05s);
