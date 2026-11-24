@@ -398,7 +398,7 @@ li:hover span {
 		--btnShadow: 1.6vw;
 
 		font-size: 2.5vw;
-		margin: 1.1vw;
+		margin: 1.3vh;
 		width: 40vw;
 		height: 4vh;
 		border-radius: 1vw;
@@ -437,7 +437,7 @@ li:hover span {
 		--btnShadow: 2.5vw;
 		
 		font-size: 4vw;
-		margin: 3vw;
+		margin: 1.2vh;
 		width: 50vw;
 		height: 5vh;
 	}
