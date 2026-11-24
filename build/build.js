@@ -8,6 +8,7 @@ const CssProcessor = require('./CssProcessor');
 const ReferenceMangler = require('./ReferenceMangler');
 const AssetVersioner = require('./AssetVersioner');
 const SvgMinifier = require('./SvgMinifier');
+const CyberpunkTextInjector = require('./CyberpunkTextInjector');
 const { walk, escapeRegex } = require('./files');
 
 const BUILD_ID = Date.now().toString(36);
@@ -40,7 +41,6 @@ const HTML_OPTIONS = {
     return lightningcss.transform({ filename: 'inline.css', code: Buffer.from(text), minify: true, targets }).code.toString();
   }
 };
-
 const JS_OPTIONS = {
   ecma: 2020,
   compress: {
@@ -93,7 +93,8 @@ function reportSizes() {
   const jsFiles = walk(srcDir, ['.js'], ignoreList);
   const htmlText = htmlFiles.map(f => fs.readFileSync(f, 'utf8')).join('\n');
   const usageText = htmlText + '\n' + jsFiles.map(f => fs.readFileSync(f, 'utf8')).join('\n');
-  const css = new CssProcessor({ targets, safelist: SAFELIST, ignoreList });
+  const cyberpunkText = new CyberpunkTextInjector({ sentencesFile: path.join(__dirname, 'cyberpunkSentences.txt') });
+  const css = new CssProcessor({ targets, safelist: SAFELIST, ignoreList, preprocessors: [cyberpunkText] });
   const classMap = css.process(srcDir, distDir, usageText, collectReservedNames(htmlText));
   const mangler = new ReferenceMangler(classMap);
   const versioner = new AssetVersioner(BUILD_ID);

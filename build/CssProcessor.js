@@ -6,10 +6,11 @@ const FIRST_CHARS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const NEXT_CHARS = FIRST_CHARS + '0123456789-_';
 
 class CssProcessor {
-  constructor({ targets, safelist, ignoreList }) {
+  constructor({ targets, safelist, ignoreList, preprocessors = [] }) {
     this.targets = targets;
     this.safelist = safelist;
     this.ignoreList = ignoreList;
+    this.preprocessors = preprocessors;
     this.classMap = Object.create(null);
     this.counter = 0;
   }
@@ -41,12 +42,20 @@ class CssProcessor {
     });
   }
 
+  preprocess(content) {
+    return this.preprocessors.reduce((text, p) => p.before(text), content);
+  }
+
+  postprocess(code) {
+    return this.preprocessors.reduce((text, p) => p.after(text), code);
+  }
+
   process(srcDir, distDir, usageText, reserved) {
     const files = walk(srcDir, ['.css'], this.ignoreList).map(src => ({
       src,
       dist: path.join(distDir, path.relative(srcDir, src)),
       name: path.basename(src),
-      content: fs.readFileSync(src, 'utf8')
+      content: this.preprocess(fs.readFileSync(src, 'utf8'))
     }));
 
     const keep = new Set();
@@ -81,7 +90,7 @@ class CssProcessor {
       const entries = Object.entries(file.exports).sort((a, b) => b[1].name.length - a[1].name.length);
       for (const [original, mapping] of entries) code = code.split(mapping.name).join(this.classMap[original]);
       fs.mkdirSync(path.dirname(file.dist), { recursive: true });
-      fs.writeFileSync(file.dist, code);
+      fs.writeFileSync(file.dist, this.postprocess(code));
     }
     return this.classMap;
   }
