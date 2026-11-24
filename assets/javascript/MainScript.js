@@ -326,3 +326,5 @@ document.addEventListener('mouseup', function() {
         }
     }
 });
+
+document.addEventListener('touchstart', () => {}, { passive: true });
