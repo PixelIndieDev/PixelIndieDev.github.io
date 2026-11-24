@@ -25,30 +25,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '24'
+          cache: npm
 
-      - name: Generate markdown pages
-        run: |
-          node scripts/generateMarkdown.js . rm -rf markdown scripts
+      - name: Install build tools
+        run: npm ci
 
-      - name: Install Minification Tools
-        run: npm install -g terser csso-cli html-minifier-terser
-
-      - name: Minify js
-        run: |
-          find . -name "*.js" ! -name "*.min.js" -exec terser {} -o {} -c -m \;
-
-      - name: Minify css
-        run: |
-          find . -name "*.css" ! -name "*.min.css" -exec csso {} -o {} \;
-
-      - name: Minify html
-        run: |
-          find . -name "*.html" -exec html-minifier-terser {} -o {} --collapse-whitespace --remove-comments \;
+      - name: Build and minify
+        run: npm run build
 
       - name: Upload GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: dist
 
   deploy:
     environment:

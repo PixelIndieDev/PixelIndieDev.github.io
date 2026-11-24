@@ -1,0 +1,16 @@
+{
+  "name": "pixelindiedev-site",
+  "private": true,
+  "scripts": {
+    "build": "node build/build.js"
+  },
+  "devDependencies": {
+    "acorn": "^8.19.0",
+    "acorn-walk": "^8.3.5",
+    "browserslist": "^4.29.6",
+    "html-minifier-terser": "^7.2.0",
+    "lightningcss": "^1.33.0",
+    "magic-string": "^1.4.5",
+    "terser": "^5.51.4"
+  }
+}

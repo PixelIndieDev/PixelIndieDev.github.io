@@ -1,2 +1,4 @@
 *.bat
 *.url
+node_modules/
+dist/
