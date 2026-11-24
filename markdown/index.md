@@ -17,7 +17,7 @@ The html page shows the url of the github-readme-stats stats of PixelIndieDev
 
 ## Website appearance (`pixelindiedev.github.io`)
 His site features a bright friendly look with his Piggy mascot visible and falling hearts in the background. The background is #bcf9f8 and the hearts are slightly transparent variants of white. Hovering over specific buttons causes the background and/or the mascot to visible change.
-The eyes of the Piggy follow the cursor on desktop devices. It also makes facial expression as you navigate the site.
+The eyes of the Piggy follow the cursor on desktop devices. It also makes facial expression as you navigate the site. By clicking on some parts of the mascot, it can trigger special animations.
 
 ## License
 Code | (HTML, CSS, JavaScript) - [MIT](LICENSE)
