@@ -1,39 +1,24 @@
 const EYE_OFFSET_RATIO = 0.05;
-let max_eyeOffset = 50;
-const minDistanceAway = 100;
-const maxDistanceAway = 600;
+const MIN_DISTANCE_RATIO = 0.1;
+const MAX_DISTANCE_RATIO = 0.6;
 
 const isPiggyOnMobile = window.matchMedia('(max-aspect-ratio: 1500/1300)');
 
 const eyeElement = document.querySelector('.eyes use');
 const piggyElement = document.querySelector('.piggy');
-let pageCenteredX = window.innerWidth * 0.5;
-let pageCenteredY = window.innerHeight * 0.5;
 
-function updateEyeLimit() {
-    max_eyeOffset = piggyElement.offsetWidth * EYE_OFFSET_RATIO;
-}
-updateEyeLimit();
-
-function recalcEyeCenter() {
+function getEyeMetrics() {
     const rect = eyeElement.getBoundingClientRect();
     const transform = new DOMMatrix(getComputedStyle(eyeElement).transform);
-    const eyes_absoluteTop = rect.top + window.scrollY - transform.m42;
-    const eyes_absoluteLeft = rect.left + window.scrollX - transform.m41;
-    pageCenteredX = eyes_absoluteLeft + rect.width / 2;
-    pageCenteredY = eyes_absoluteTop + rect.height / 2;
+    const piggyWidth = piggyElement.offsetWidth;
+    return {
+        centerX: rect.left - transform.m41 + rect.width / 2,
+        centerY: rect.top - transform.m42 + rect.height / 2,
+        maxOffset: piggyWidth * EYE_OFFSET_RATIO,
+        minDistance: piggyWidth * MIN_DISTANCE_RATIO,
+        maxDistance: piggyWidth * MAX_DISTANCE_RATIO
+    };
 }
-
-piggyElement.addEventListener('animationend', recalcEyeCenter, { once: true });
-
-let resizeFrame = null;
-window.addEventListener('resize', () => {
-    if (resizeFrame) cancelAnimationFrame(resizeFrame);
-    resizeFrame = requestAnimationFrame(() => {
-        updateEyeLimit();
-        recalcEyeCenter();
-    });
-});
 
 const mouthElement = document.querySelector('.mouth use');
 const noseElement = document.querySelector('.nose');
@@ -208,14 +193,13 @@ window.resetPiggyEmotion = function() {
 
 // eye movements
 function updateEyePosition(cursorX, cursorY) {
-    const dx = cursorX - pageCenteredX;
-    const dy = cursorY - pageCenteredY;
+    const m = getEyeMetrics();
+    const dx = cursorX - m.centerX;
+    const dy = cursorY - m.centerY;
     const dist = Math.sqrt(dx * dx + dy * dy);
-    const remapDist = Math.min(Math.max((dist - minDistanceAway) / (maxDistanceAway - minDistanceAway), 0), 1);
-    const scale = dist > 0 ? (remapDist * max_eyeOffset) / dist : 0;
-    const offsetX = dx * scale;
-    const offsetY = dy * scale;
-    eyeElement.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+    const remapDist = Math.min(Math.max((dist - m.minDistance) / (m.maxDistance - m.minDistance), 0), 1);
+    const scale = dist > 0 ? (remapDist * m.maxOffset) / dist : 0;
+    eyeElement.style.transform = `translate(${dx * scale}px, ${dy * scale}px)`;
     if (piggyEmotion == Emotion.SAD) switchEmotion(Emotion.NEUTRAL);
 }
 
@@ -223,8 +207,8 @@ let mouseX = 0, mouseY = 0, ticking = false, leftWindow = false, eyeAnimFrame = 
 window.addEventListener('mousemove', (e) => {
     if (isPiggyOnMobile.matches) return;
     leftWindow = false;
-    mouseX = e.pageX;
-    mouseY = e.pageY;
+    mouseX = e.clientX;
+    mouseY = e.clientY;
     if (!ticking) {
         ticking = true;
         eyeAnimFrame = requestAnimationFrame(() => {
@@ -233,6 +217,15 @@ window.addEventListener('mousemove', (e) => {
         });
     }
 }, { passive: true });
+
+window.addEventListener('resize', () => {
+    if (isPiggyOnMobile.matches || leftWindow || ticking) return;
+    ticking = true;
+    eyeAnimFrame = requestAnimationFrame(() => {
+        updateEyePosition(mouseX, mouseY);
+        ticking = false;
+    });
+});
 
 isPiggyOnMobile.addEventListener('change', (e) => {
     if (e.matches) {
