@@ -68,7 +68,6 @@ body {
 	background: rgba(255,255,255,0.2);
 	box-shadow: 2vw 2vw 4vw -0.6vw rgba(0,0,0,0.2);
 	backdrop-filter: blur(0.5vw);
-	-webkit-backdrop-filter: blur(0.5vw);
 	border-radius: 1vw;
 
 	z-index: 500;
