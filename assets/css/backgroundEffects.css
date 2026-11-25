@@ -143,26 +143,23 @@
 }
 
 .matrix-container {
-  display: flex
+  --matrixSizing: calc(100vw / 1920);
+  display: flex;
 }
-
 .matrix-pattern {
-  position: relative;
-  width: 1000px;
+  display: flex;
   height: 100%;
-  flex-shrink: 0
+  flex-shrink: 0;
 }
 
 .matrix-column {
-  position: absolute;
-  top: -100%;
-  width: 20px;
+  position: relative;
+  flex: 0 0 calc(25 * var(--matrixSizing));
   height: 100%;
-  font-size: 16px;
-  line-height: 18px;
+  font-size: calc(16 * var(--matrixSizing));
+  line-height: calc(18 * var(--matrixSizing));
   font-weight: 700;
-  animation: linear infinite fall;
-  white-space: nowrap
+  animation: fall linear infinite;
 }
 
 .matrix-column::before {
@@ -170,255 +167,60 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(0deg, #56ecf9 0, #56ebf99d 100%);
+  background: linear-gradient(0deg, #56ecf9, #56ebf99d);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   writing-mode: vertical-lr;
-  letter-spacing: 1px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale
+  letter-spacing: var(--matrixSizing);
 }
 
-.matrix-column:first-child {
-  left: 0;
-  animation-delay: -2.5s;
-  animation-duration: 3s
+.matrix-column:nth-child(5n+1) {
+  animation-duration: 2.5s;
 }
 
-.matrix-column:nth-child(2) {
-  left: 25px;
-  animation-delay: -3.2s;
-  animation-duration: 4s
+.matrix-column:nth-child(5n+2) {
+  animation-duration: 3s;
 }
 
-.matrix-column:nth-child(3) {
-  left: 50px;
-  animation-delay: -1.8s;
-  animation-duration: 2.5s
+.matrix-column:nth-child(5n+3) {
+  animation-duration: 3.5s;
 }
 
-.matrix-column:nth-child(4) {
-  left: 75px;
-  animation-delay: -2.9s;
-  animation-duration: 3.5s
+.matrix-column:nth-child(5n+4) {
+  animation-duration: 4s;
 }
 
-.matrix-column:nth-child(5) {
-  left: 100px;
-  animation-delay: -1.5s;
-  animation-duration: 3s
+.matrix-column:nth-child(5n) {
+  animation-duration: 4.5s;
 }
 
-.matrix-column:nth-child(6) {
-  left: 125px;
-  animation-delay: -3.8s;
-  animation-duration: 4.5s
-}
-
-.matrix-column:nth-child(7) {
-  left: 150px;
-  animation-delay: -2.1s;
-  animation-duration: 2.8s
-}
-
-.matrix-column:nth-child(8) {
-  left: 175px;
-  animation-delay: -2.7s;
-  animation-duration: 3.2s
-}
-
-.matrix-column:nth-child(9) {
-  left: 200px;
-  animation-delay: -3.4s;
-  animation-duration: 3.8s
-}
-
-.matrix-column:nth-child(10) {
-  left: 225px;
-  animation-delay: -1.9s;
-  animation-duration: 2.7s
-}
-
-.matrix-column:nth-child(11) {
-  left: 250px;
-  animation-delay: -3.6s;
-  animation-duration: 4.2s
-}
-
-.matrix-column:nth-child(12) {
-  left: 275px;
-  animation-delay: -2.3s;
-  animation-duration: 3.1s
-}
-
-.matrix-column:nth-child(13) {
-  left: 300px;
-  animation-delay: -3.1s;
-  animation-duration: 3.6s
-}
-
-.matrix-column:nth-child(14) {
-  left: 325px;
-  animation-delay: -2.6s;
-  animation-duration: 2.9s
-}
-
-.matrix-column:nth-child(15) {
-  left: 350px;
-  animation-delay: -3.7s;
-  animation-duration: 4.1s
-}
-
-.matrix-column:nth-child(16) {
-  left: 375px;
-  animation-delay: -2.8s;
-  animation-duration: 3.3s
-}
-
-.matrix-column:nth-child(17) {
-  left: 400px;
-  animation-delay: -3.3s;
-  animation-duration: 3.7s
-}
-
-.matrix-column:nth-child(18) {
-  left: 425px;
-  animation-delay: -2.2s;
-  animation-duration: 2.6s
-}
-
-.matrix-column:nth-child(19) {
-  left: 450px;
-  animation-delay: -3.9s;
-  animation-duration: 4.3s
-}
-
-.matrix-column:nth-child(20) {
-  left: 475px;
-  animation-delay: -2.4s;
-  animation-duration: 3.4s
-}
-
-.matrix-column:nth-child(21) {
-  left: 500px;
-  animation-delay: -1.7s;
-  animation-duration: 2.4s
-}
-
-.matrix-column:nth-child(22) {
-  left: 525px;
-  animation-delay: -3.5s;
-  animation-duration: 3.9s
-}
-
-.matrix-column:nth-child(23) {
-  left: 550px;
-  animation-delay: -2s;
-  animation-duration: 3s
-}
-
-.matrix-column:nth-child(24) {
-  left: 575px;
-  animation-delay: -4s;
-  animation-duration: 4.4s
-}
-
-.matrix-column:nth-child(25) {
-  left: 600px;
+.matrix-column:nth-child(7n+1) {
   animation-delay: -1.6s;
-  animation-duration: 2.3s
 }
 
-.matrix-column:nth-child(26) {
-  left: 625px;
-  animation-delay: -3s;
-  animation-duration: 3.5s
-}
-
-.matrix-column:nth-child(27) {
-  left: 650px;
-  animation-delay: -3.8s;
-  animation-duration: 4s
-}
-
-.matrix-column:nth-child(28) {
-  left: 675px;
-  animation-delay: -2.5s;
-  animation-duration: 2.8s
-}
-
-.matrix-column:nth-child(29) {
-  left: 700px;
-  animation-delay: -3.2s;
-  animation-duration: 3.6s
-}
-
-.matrix-column:nth-child(30) {
-  left: 725px;
-  animation-delay: -2.7s;
-  animation-duration: 3.2s
-}
-
-.matrix-column:nth-child(31) {
-  left: 750px;
-  animation-delay: -1.8s;
-  animation-duration: 2.7s
-}
-
-.matrix-column:nth-child(32) {
-  left: 775px;
-  animation-delay: -3.6s;
-  animation-duration: 4.1s
-}
-
-.matrix-column:nth-child(33) {
-  left: 800px;
+.matrix-column:nth-child(7n+2) {
   animation-delay: -2.1s;
-  animation-duration: 3.1s
 }
 
-.matrix-column:nth-child(34) {
-  left: 825px;
-  animation-delay: -3.4s;
-  animation-duration: 3.7s
+.matrix-column:nth-child(7n+3) {
+  animation-delay: -2.4s;
 }
 
-.matrix-column:nth-child(35) {
-  left: 850px;
-  animation-delay: -2.8s;
-  animation-duration: 2.9s
+.matrix-column:nth-child(7n+4) {
+  animation-delay: -2.7s;
 }
 
-.matrix-column:nth-child(36) {
-  left: 875px;
-  animation-delay: -3.7s;
-  animation-duration: 4.2s
+.matrix-column:nth-child(7n+5) {
+  animation-delay: -3.2s;
 }
 
-.matrix-column:nth-child(37) {
-  left: 900px;
-  animation-delay: -2.3s;
-  animation-duration: 3.3s
+.matrix-column:nth-child(7n+6) {
+  animation-delay: -3.6s;
 }
 
-.matrix-column:nth-child(38) {
-  left: 925px;
-  animation-delay: -1.9s;
-  animation-duration: 2.5s
-}
-
-.matrix-column:nth-child(39) {
-  left: 950px;
-  animation-delay: -3.5s;
-  animation-duration: 3.8s
-}
-
-.matrix-column:nth-child(40) {
-  left: 975px;
-  animation-delay: -2.6s;
-  animation-duration: 3.4s
+.matrix-column:nth-child(7n) {
+  animation-delay: -3.9s;
 }
 
 .matrix-column:nth-child(odd)::before {
