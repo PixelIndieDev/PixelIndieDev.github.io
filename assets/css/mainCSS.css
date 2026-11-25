@@ -342,6 +342,7 @@ li:hover span {
 		font-size: 1vw;
 		width: 15vw;
 		margin: 0.7vw;
+		border-radius: 0.6vw;
 	}
 	.menu > .slideInto > .longButton {
 		width: 17vw;
@@ -441,6 +442,7 @@ li:hover span {
 		margin: 1.2vh;
 		width: 50vw;
 		height: 5vh;
+		border-radius: 1.5vw;
 	}
 	.menu > .slideInto > a::before,
 	.backbuttonError::before {
