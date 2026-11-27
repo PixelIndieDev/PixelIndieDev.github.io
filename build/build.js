@@ -9,13 +9,14 @@ const ReferenceMangler = require('./ReferenceMangler');
 const AssetVersioner = require('./AssetVersioner');
 const SvgMinifier = require('./SvgMinifier');
 const CyberpunkTextInjector = require('./CyberpunkTextInjector');
+const MarkdownGenerator = require('../scripts/generateMarkdown');
 const { walk, escapeRegex } = require('./files');
 
 const BUILD_ID = Date.now().toString(36);
 const srcDir = path.join(__dirname, '..');
 const distDir = path.join(srcDir, 'dist');
 const ignoreList = [
-  '.git', '.github', 'node_modules', 'dist', 'build',
+  '.git', '.github', 'node_modules', 'dist', 'build', 'markdown', 'scripts',
   'package.json', 'package-lock.json', '.gitignore', 'README.md', 'LICENSE'
 ];
 const targets = lightningcss.browserslistToTargets(browserslist('defaults'));
@@ -116,11 +117,12 @@ function reportSizes() {
     } else if (ext === '.webmanifest' || ext === '.json') {
       fs.writeFileSync(dist, JSON.stringify(JSON.parse(fs.readFileSync(src, 'utf8'))));
     } else if (ext === '.svg') {
-+      svgMinifier.minify(src, dist);
+      svgMinifier.minify(src, dist);
     } else {
       fs.copyFileSync(src, dist);
     }
   }
+  MarkdownGenerator.run(srcDir, distDir);
   reportLeftovers(classMap);
   reportSizes();
 })().catch(err => {
