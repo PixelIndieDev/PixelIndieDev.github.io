@@ -23,7 +23,7 @@ PixelIndieDev plays games, but mostly works on hobby programming projects.
 PixelIndieDev doesn't like playing to win. It's more about having fun and doing silly stuff.
 
 ### Dead by Daylight
-Sable main
+P40+ Sable main
 
 ### Sims 4
 He likes the game, but not the pricing tactics of the game.
