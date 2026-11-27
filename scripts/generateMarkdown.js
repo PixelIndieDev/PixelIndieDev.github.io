@@ -1,11 +1,9 @@
 const fs = require("fs");
 const path = require("path");
-const ROOT_DIR = process.argv[2] || ".";
-const TEMPLATE_DIR = path.join(ROOT_DIR, "markdown");
 
 class HtmlSource {
-	static read(fileName) {
-		return fs.readFileSync(path.join(ROOT_DIR, fileName), "utf8");
+	static read(srcDir, fileName) {
+		return fs.readFileSync(path.join(srcDir, fileName), "utf8");
 	}
 	static decode(text) {
 		return text.replace(/&amp;/g, "&").replace(/&quot;/g, "\"").replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/\s+/g, " ").trim();
@@ -49,12 +47,12 @@ class MarkdownFormatter {
 }
 
 class PlaceholderData {
-	static build() {
+	static build(srcDir) {
 		const data = {
-			socials: MarkdownFormatter.links(SocialsExtractor.extract(HtmlSource.read("index.html"))),
-			aboutme: MarkdownFormatter.bullets(ListItemExtractor.extract(HtmlSource.read("aboutme.html"))),
-			favoritegames: MarkdownFormatter.bullets(ListItemExtractor.extract(HtmlSource.read("favoritegames.html"))),
-			mods: MarkdownFormatter.mods(ModsExtractor.extract(HtmlSource.read("mymods.html"))),
+			socials: MarkdownFormatter.links(SocialsExtractor.extract(HtmlSource.read(srcDir, "index.html"))),
+			aboutme: MarkdownFormatter.bullets(ListItemExtractor.extract(HtmlSource.read(srcDir, "aboutme.html"))),
+			favoritegames: MarkdownFormatter.bullets(ListItemExtractor.extract(HtmlSource.read(srcDir, "favoritegames.html"))),
+			mods: MarkdownFormatter.mods(ModsExtractor.extract(HtmlSource.read(srcDir, "mymods.html"))),
 			date: new Date().toISOString().split("T")[0]
 		};
 
@@ -65,7 +63,6 @@ class PlaceholderData {
 	}
 }
 
-// replace placeholders in template
 class TemplateRenderer {
 	static render(template, data, fileName) {
 		return template.replace(/\{\{(\w+)\}\}/g, (full, key) => {
@@ -78,16 +75,20 @@ class TemplateRenderer {
 }
 
 class MarkdownGenerator {
-	static run() {
-		const data = PlaceholderData.build();
-		const templates = fs.readdirSync(TEMPLATE_DIR);
-            
-		for (const fileName of templates) {
-			const template = fs.readFileSync(path.join(TEMPLATE_DIR, fileName), "utf8");
+	static run(srcDir, outDir) {
+		const data = PlaceholderData.build(srcDir);
+		const templateDir = path.join(srcDir, "markdown");
+		for (const fileName of fs.readdirSync(templateDir)) {
+			const template = fs.readFileSync(path.join(templateDir, fileName), "utf8");
 			const output = TemplateRenderer.render(template, data, fileName);
-			fs.writeFileSync(path.join(ROOT_DIR, fileName), output);
+			fs.writeFileSync(path.join(outDir, fileName), output);
 			console.log(`Generated ${fileName}`);
 		}
 	}
 }
-MarkdownGenerator.run();
+
+if (require.main === module) {
+	const rootDir = process.argv[2] || ".";
+	MarkdownGenerator.run(rootDir, rootDir);
+}
+module.exports = MarkdownGenerator;
