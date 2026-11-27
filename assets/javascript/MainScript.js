@@ -11,7 +11,7 @@ refreshHeartsBackgroundSize();
 window.addEventListener('load', function() {
     errorPage = document.querySelector('.error-page');
     // if error page, then always show the loading screen
-    minimumWaitTime = 300;
+    minimumWaitTime = 100;
     // minimumWaitTime = 9999999999;
     if (!errorPage) {
         // minimum wait time
